@@ -3,31 +3,57 @@
 /**
  * Module dependencies.
  */
+const http = require('http');
 
-var app = require('../app');
-var debug = require('debug')('testexpress:server');
-var http = require('http');
+require('dotenv').config();
+const { sequelize } = require('../models');
 
-/**
- * Get port from environment and store in Express.
- */
 
-var port = normalizePort(process.env.PORT || '3000');
-app.set('port', port);
+sequelize.authenticate()
+  .then(() => {
+    console.log('oke');
 
-/**
- * Create HTTP server.
- */
+    /**
+    * Get port from environment and store in Express.
+    */
 
-var server = http.createServer(app);
+    const app = require('../app');
+    const debug = require('debug')('testexpress:server');
 
-/**
- * Listen on provided port, on all network interfaces.
- */
+    var port = normalizePort(process.env.PORT || '3000');
+    app.set('port', port);
 
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
+    /**
+     * Create HTTP server.
+     */
+
+    var server = http.createServer(app);
+
+    /**
+     * Listen on provided port, on all network interfaces.
+     */
+
+    server.listen(port);
+    server.on('error', onError);
+    server.on('listening', onListening);
+
+
+    /**
+     * Event listener for HTTP server "listening" event.
+     */
+
+    function onListening() {
+      var addr = server.address();
+      var bind = typeof addr === 'string'
+        ? 'pipe ' + addr
+        : 'port ' + addr.port;
+      debug('Listening on ' + bind);
+    }
+  })
+  .catch(err => {
+    console.log('no oke');
+  });
+
 
 /**
  * Normalize a port into a number, string, or false.
@@ -77,14 +103,3 @@ function onError(error) {
   }
 }
 
-/**
- * Event listener for HTTP server "listening" event.
- */
-
-function onListening() {
-  var addr = server.address();
-  var bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
-  debug('Listening on ' + bind);
-}

@@ -7,7 +7,9 @@ const logger = require('morgan');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const accountsRouter = require('./routes/accounts');
-const productsRouter = require('./routes/products');
+
+const productsRouter = require('./components/products');
+
 const ordersRouter = require('./routes/orders')
 const informationRouter = require('./routes/information');
 

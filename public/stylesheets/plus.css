@@ -9,7 +9,7 @@
 
 .btnDSTK {
     display: inline-block;
-    
+
 }
 
 .imageDSSP {
@@ -23,7 +23,8 @@
     font-size: medium;
 }
 
-.btnTSP {
+.btn-plus-products {
+    float: right;
     background-color: rgb(49, 206, 153);
     font-size: medium;
     font-weight: bold;
@@ -35,7 +36,7 @@
 
 .btnSuaXoa {
     display: flex;
-    justify-content:space-around;
+    justify-content: space-around;
 }
 
 .btnSua, .btnXoa {
@@ -48,16 +49,17 @@ ul {
 
 /* phan info */
 
-.list li{
+.list li {
     padding: 16px;
     font-size: 18px;
     text-align: right;
 }
 
-.list-info li{
+.list-info li {
     padding: 10px;
 }
-.list-info input{
+
+.list-info input {
     height: 35px;
     width: 100%;
     border-radius: 5px;
@@ -65,21 +67,55 @@ ul {
     font-size: 18px;
 }
 
-.avatar img{
+.avatar img {
     border-radius: 50%;
     width: 120px;
     border: solid #777 2px;
     box-shadow: 0px 0px 5px 3px #999;
 }
-.name{
+
+.name {
     font-size: 25px;
     padding: 15px;
 }
-.name i{
+
+.name i {
     font-size: 20px;
     padding-left: 5px;
 }
 
 .order .table {
     border: 1;
-  }
+}
+
+.search-section {
+    position: relative;
+
+}
+
+.search-section #search-bar {
+    width: 100%;
+    margin: 0;
+    border-radius: 4px;
+    line-height: 44px;
+}
+
+.search-section .search-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 10%;
+    text-align: center;
+    background-color: rgb(73, 124, 218);
+    border-radius: 4px;
+}
+
+.search-section .search-btn:hover {
+    cursor: pointer;
+    background-color: #f44336;
+}
+
+.search-section .search-icon {
+    color: #fff;
+    line-height: 50px;
+}

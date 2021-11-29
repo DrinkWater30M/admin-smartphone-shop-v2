@@ -36,7 +36,6 @@
 
     </div>
     <div id="page-inner">
-
         <div class="row">
             <div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="board">
@@ -52,22 +51,31 @@
             </div>
 
         </div>
+        {{!-- Begin: search-bar, plus products --}}
         <div class="row">
+            <div class="col-md-6 col-sm-12 col-xs-12 search-section">
+                <input type="text" id="search-bar">
+                <div class="search-btn">
+                    <i class="search-icon ti-search"></i>
+                </div>
+            </div>
             <div class="col-md-6 col-sm-12 col-xs-12">
-                <button class="btnTSP">Thêm sản phẩm</button>
+                <button class="btn-plus-products">Thêm sản phẩm</button>
             </div>
         </div>
-        <!-- <div id="page-inner"> -->
+        {{!-- Begin: search-bar, plus products --}}
 
+        <!-- <div id="page-inner"> -->
         <div class="row">
+            {{#each products}} 
             <div class="col-md-4 col-sm-12 col-xs-12">
                 <div class="board">
                     <div class="panel panel-primary">
                         <img src="images/iphone13.jpg" class="imageDSSP" alt="iphone">
                         <div class="inforSP">
                             <ul>
-                                <li><strong>Iphone 13 </strong></li>
-                                <li>Hãng: Apple</li>
+                                <li><strong>{{TenSanPham}} </strong></li>
+                                <li>Hãng: {{ThuongHieu}}</li>
                                 <li>Số lượng: 12</li>
                                 <li>Giá bán: 12000000</li>
                                 <li>Giảm giá: 2%</li>
@@ -80,70 +88,7 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-md-4 col-sm-12 col-xs-12">
-                <div class="board">
-                    <div class="panel panel-primary">
-                        <img src="images/samsung12.jpg" class="imageDSSP" alt="iphone">
-                        <div class="inforSP">
-                            <ul>
-                                <li><strong>Samsung Galaxy A12 </strong></li>
-                                <li>Hãng: Samsung</li>
-                                <li>Số lượng: 10</li>
-                                <li>Giá bán: 15000000</li>
-                                <li>Giảm giá: 2%</li>
-                            </ul>
-                            <div class="btnSuaXoa">
-                                <button class="btnSua">sửa</button>
-                                <button class="btnXoa">xóa</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-sm-12 col-xs-12">
-                <div class="board">
-                    <div class="panel panel-primary">
-                        <img src="images/huawei.jpg" class="imageDSSP" alt="iphone">
-                        <div class="inforSP">
-                            <ul>
-                                <li><strong>Huawei Nova 3i </strong></li>
-                                <li>Hãng: Huawei</li>
-                                <li>Số lượng: 15</li>
-                                <li>Giá bán: 10000000</li>
-                                <li>Giảm giá: 2%</li>
-                            </ul>
-                            <div class="btnSuaXoa">
-                                <button class="btnSua">sửa</button>
-                                <button class="btnXoa">xóa</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 col-sm-12 col-xs-12">
-                    <div class="board">
-                        <div class="panel panel-primary">
-                            <img src="images/vivoy21.jpg" class="imageDSSP" alt="iphone">
-                            <div class="inforSP">
-                                <ul>
-                                    <li><strong>vivo Y21</strong></li>
-                                    <li>Hãng: vivo</li>
-                                    <li>Số lượng: 25</li>
-                                    <li>Giá bán: 20000000</li>
-                                    <li>Giảm giá: 2%</li>
-                                </ul>
-                                <div class="btnSuaXoa">
-                                    <button class="btnSua">sửa</button>
-                                    <button class="btnXoa">xóa</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {{/each}}
         </div>
     </div>
 </div>
