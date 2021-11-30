@@ -1,5 +1,6 @@
 const { models } = require('../../models');
 const { Op, INTEGER } = require("sequelize");
+const thuong_hieu = require('../../models/thuong_hieu');
 
 
 
@@ -66,18 +67,51 @@ let createProduct = async (data) => {
     }
     MaSanPham = MaSanPham + (max + 1);
 
-    // return new Promise(async (resolve, reject) => {
-    //     try {
-    //         await models.san_pham.create({
-    //             MaSanPham: MaSanPham,
-    //             TenSanPham: data.productName,
+    let thuongHieu = await models.thuong_hieu.findAll({ raw: true })
+    let MaThuongHieu = '';
+    thuongHieu.forEach(element => {
+        if (element.ThuongHieu == data.thuongHieu)
+            MaThuongHieu = element.MaThuongHieu;
+    });
 
-    //         })
-    //     } catch (e) {
-    //         reject(e)
-    //     }
-    // })
+    if (MaThuongHieu == '') {
+        MaThuongHieu = data.thuongHieu.substring(0, 3);
+        await models.thuong_hieu.create({
+            MaThuongHieu: MaThuongHieu,
+            ThuongHieu: data.thuongHieu,
+        })
+    }
+    console.log("🚀 ~ file: productService.js ~ line 78 ~ createProduct ~ MaThuongHieu", MaThuongHieu)
+
+    return new Promise(async (resolve, reject) => {
+        try {
+            await models.san_pham.create({
+                MaSanPham: MaSanPham,
+                TenSanPham: data.productName,
+                MaThuongHieu: MaThuongHieu,
+            });
+
+            await models.loai_san_pham.create({
+                MaSanPham: MaSanPham,
+                LoaiSanPham: data.dungLuong,
+                DonGia: data.donGia,
+                SoLuong: data.soLuong,
+                HinhAnhMinhHoa: '',
+                Ram: data.ram,
+                Rom: data.rom,
+                ManHinh: data.manHinh,
+                DoPhanGiai: data.doPhanGiai,
+                ChipXuLi: data.chipXuLy,
+                Pin: data.pin,
+                MauSac: data.mauSac
+            });
+        } catch (e) {
+            reject(e)
+        }
+    })
 }
+
+
 
 module.exports = {
     list: list,

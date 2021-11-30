@@ -8,6 +8,6 @@ router.get('/add', function(req, res, next) {
     res.render('products/productInsert');
 });
 
-router.post('/post', productController.addProduct);
+router.post('/add/post', productController.addProduct);
 
 module.exports = router;
