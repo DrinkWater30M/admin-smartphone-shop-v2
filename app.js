@@ -8,7 +8,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const accountsRouter = require('./routes/accounts');
 
-const productsRouter = require('./components/products');
+const productsRouter = require('./components/products/productRoute');
 
 const ordersRouter = require('./routes/orders')
 const informationRouter = require('./routes/information');

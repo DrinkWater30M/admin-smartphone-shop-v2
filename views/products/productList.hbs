@@ -22,73 +22,81 @@
 </nav>
 
 <!-- /. NAV SIDE  -->
-<div id="page-wrapper">
-    <div class="header">
-        <h1 class="page-header">
-            Danh sách sản phẩm
-            <!-- <small>This is your UI elements section</small> -->
-        </h1>
-        <ol class="breadcrumb">
-            <li><a href="#">Trang chủ</a></li>
-            <li><a href="#">Danh sách sản phẩm </a></li>
-            <li class="active">Dữ liệu</li>
-        </ol>
-
-    </div>
-    <div id="page-inner">
-        <div class="row">
-            <div class="col-md-6 col-sm-12 col-xs-12">
-                <div class="board">
-                    <div class="panel panel-primary">
-                        <div class="number">
-                            <h3>
-                                <h3>4</h3>
-                                <small>Tổng số sản phẩm</small>
-                            </h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="content">
+    <div id="page-wrapper">
+        <div class="header">
+            <h1 class="page-header">
+                Danh sách sản phẩm
+                <!-- <small>This is your UI elements section</small> -->
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#">Trang chủ</a></li>
+                <li><a href="#">Danh sách sản phẩm </a></li>
+                <li class="active">Dữ liệu</li>
+            </ol>
 
         </div>
-        {{!-- Begin: search-bar, plus products --}}
-        <div class="row">
-            <div class="col-md-6 col-sm-12 col-xs-12 search-section">
-                <input type="text" id="search-bar">
-                <div class="search-btn">
-                    <i class="search-icon ti-search"></i>
-                </div>
-            </div>
-            <div class="col-md-6 col-sm-12 col-xs-12">
-                <button class="btn-plus-products">Thêm sản phẩm</button>
-            </div>
-        </div>
-        {{!-- Begin: search-bar, plus products --}}
-
-        <!-- <div id="page-inner"> -->
-        <div class="row">
-            {{#each products}} 
-            <div class="col-md-4 col-sm-12 col-xs-12">
-                <div class="board">
-                    <div class="panel panel-primary">
-                        <img src="images/iphone13.jpg" class="imageDSSP" alt="iphone">
-                        <div class="inforSP">
-                            <ul>
-                                <li><strong>{{TenSanPham}} </strong></li>
-                                <li>Hãng: {{ThuongHieu}}</li>
-                                <li>Số lượng: 12</li>
-                                <li>Giá bán: 12000000</li>
-                                <li>Giảm giá: 2%</li>
-                            </ul>
-                            <div class="btnSuaXoa">
-                                <button class="btnSua">sửa</button>
-                                <button class="btnXoa">xóa</button>
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="board">
+                        <div class="panel panel-primary">
+                            <div class="number">
+                                <h3>
+                                    <h3>4</h3>
+                                    <small>Tổng số sản phẩm</small>
+                                </h3>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
-            {{/each}}
+            {{!-- Begin: search-bar, plus products --}}
+         
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 col-xs-12 search-section">
+                        <input type="text" id="search-bar">
+                        <div class="search-btn">
+                            <i class="search-icon ti-search"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                        <button class="btn-plus-products">Thêm sản phẩm</button>
+                    </div>
+                </div>
+                {{!-- Begin: search-bar, plus products --}}
+
+                <!-- <div id="page-inner"> -->
+                <div class="row">
+                    {{#each products}}
+                    <div class="col-md-4 col-sm-12 col-xs-12">
+                        <div class="board">
+                            <div class="panel panel-primary">
+                                <img src="images/iphone13.jpg" class="imageDSSP" alt="iphone">
+                                <div class="inforSP">
+                                    <ul>
+                                        <li><strong>{{TenSanPham}} </strong></li>
+                                        <li>Hãng: {{ThuongHieu}}</li>
+                                        <li>Số lượng: 12</li>
+                                        <li>Giá bán: 12000000</li>
+                                        <li>Giảm giá: 2%</li>
+                                    </ul>
+                                    <div class="btnSuaXoa">
+                                        <button class="btnSua">sửa</button>
+                                        <button class="btnXoa">xóa</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+                <div class="page-number">
+                    <button class="ti-angle-left btn-page-number">Pre</button>
+                    <button class="ti-angle-right btn-page-number">Next</button>
+                </div>
+            
         </div>
     </div>
 </div>

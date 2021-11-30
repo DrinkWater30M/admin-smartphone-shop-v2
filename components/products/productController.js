@@ -8,7 +8,12 @@ exports.list = async (req, res) => {
     else
         pageNumber = 0;
 
-    const products = await productService.list(pageNumber);
+    let nameProduct = ''
+    if (req.query.search != null)
+        nameProduct = req.query.search
+
+    const itemPerPage = 9
+    const products = await productService.list(pageNumber,itemPerPage, nameProduct);
     console.log('i', products);
     res.render('products/productList', { products });
 }
