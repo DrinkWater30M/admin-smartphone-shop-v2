@@ -62,7 +62,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-12 col-xs-12">
-                        <button class="btn-plus-products">Thêm sản phẩm</button>
+                        <a href="/products/add"><button class="btn-plus-products"> Thêm sản phẩm</button></a>
                     </div>
                 </div>
                 {{!-- Begin: search-bar, plus products --}}
@@ -73,14 +73,13 @@
                     <div class="col-md-4 col-sm-12 col-xs-12">
                         <div class="board">
                             <div class="panel panel-primary">
-                                <img src="images/iphone13.jpg" class="imageDSSP" alt="iphone">
+                                <img src={{'hinh_anh_san_phams.HinhAnh'}} class="imageDSSP" alt="iphone">
                                 <div class="inforSP">
                                     <ul>
                                         <li><strong>{{TenSanPham}} </strong></li>
-                                        <li>Hãng: {{ThuongHieu}}</li>
-                                        <li>Số lượng: 12</li>
-                                        <li>Giá bán: 12000000</li>
-                                        <li>Giảm giá: 2%</li>
+                                        <li>Hãng: {{'MaThuongHieu_thuong_hieu.ThuongHieu'}}</li>
+                                        <li>Giá bán: {{'loai_san_phams.DonGia'}}</li>
+                                        
                                     </ul>
                                     <div class="btnSuaXoa">
                                         <button class="btnSua">sửa</button>
@@ -93,8 +92,8 @@
                     {{/each}}
                 </div>
                 <div class="page-number">
-                    <button class="ti-angle-left btn-page-number">Pre</button>
-                    <button class="ti-angle-right btn-page-number">Next</button>
+                    <button class="ti-angle-left btn-page-number" id="pagination-left">Pre</button>
+                    <button class="ti-angle-right btn-page-number" id="pagination-right">Next</button>
                 </div>
             
         </div>

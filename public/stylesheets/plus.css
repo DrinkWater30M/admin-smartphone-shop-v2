@@ -125,3 +125,51 @@ ul {
     position: flex;
     text-align: right;
 }
+
+.content .left-content .image-main {
+    display: inline-block;
+    width: 300px;
+    height: 300px;
+    margin: 0 50px;
+    background-color: rgb(170, 170, 170);
+}
+.left-content .image-main .plus-image {
+    
+}
+
+.content .right-content {
+    display: inline-block;
+}
+.add-product .product-detail {
+    text-align: right;
+}
+
+.add-product .product-detail li{
+    margin: 5px 0;
+}
+
+.product-detail li input {
+    border-radius: 4px;
+}
+
+.add-product>h3>input {
+    border-radius: 4px;
+    width: 80%;
+}
+
+.content .btn-submit-cancel-section {
+    text-align: right;
+}
+
+.btn-submit-cancel-section .btn-cancel-product {
+    margin-right: 20%;
+    margin-left: 10px;
+}
+
+.btn-submit-product, .btn-cancel-product  {
+    font-size: 16px;
+    width: 70px;
+    background-color: rgb(17, 219, 101);
+    border-radius: 4px;
+}
+
