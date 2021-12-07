@@ -1,0 +1,91 @@
+<nav class="navbar-default navbar-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="main-menu">
+
+            <li>
+                <a href="/"><i class="fa fa-dashboard"></i> Bảng điều khiển</a>
+            </li>
+            <li>
+                <a href="/accounts"><i class="fa fa-desktop"></i> Danh sách tài
+                    khoản</a>
+            </li>
+            <li>
+                <a href="/accounts/Admin" class="active-menu"><i class="fa fa-desktop"></i> Danh sách tài
+                    khoản quản trị</a>
+            </li>
+            <li>
+                <a href="/products"><i class="fa fa-desktop"></i> Danh sách sản phẩm</a>
+            </li>
+            <li>
+                <a href="/orders"><i class="fa fa-desktop"></i> Danh sách đơn hàng</a>
+            </li>
+            <li>
+                <a href="/information"><i class="fa fa-desktop"></i> Thông tin cửa hàng</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="content">
+    <div id="page-wrapper">
+        <div class="header">
+            <h1 class="page-header">
+                Danh sách sản phẩm
+                <!-- <small>This is your UI elements section</small> -->
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#">Trang chủ</a></li>
+                <li><a href="#">Danh sách tài khoản Admin</a></li>
+                <li class="active">Dữ liệu</li>
+            </ol>
+
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <a href="/accounts/Admin/add"><button class="btn-plus-products"> Thêm tài khoản quản trị</button></a>
+            </div>
+        </div>
+        {{!-- Begin: search-bar, plus products --}}
+
+        <!-- <div id="page-inner"> -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h4>Tên người sử dụng</h4>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Tên đăng nhập</h4>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Mật khẩu</h4>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Email</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="panel-body">
+                        <div class="alert alert-success">
+                            <div class="DSTK">
+                                {{#each accountList}}
+                                <div class="col-md-3">
+                                    {{TenCuaHang}}
+                                </div>
+                                <div class="col-md-3">
+                                    {{TenDangNhap}}
+                                </div>
+                                <div class="col-md-3">
+                                    {{MatKhau}}
+                                </div>
+                                <div class="col-md-3">
+                                    {{Email}}
+                                </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

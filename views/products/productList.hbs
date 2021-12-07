@@ -6,7 +6,12 @@
                 <a href="/"><i class="fa fa-dashboard"></i> Bảng điều khiển</a>
             </li>
             <li>
-                <a href="/accounts"><i class="fa fa-desktop"></i> Danh sách tài khoản</a>
+                <a href="/accounts"><i class="fa fa-desktop"></i> Danh sách tài
+                    khoản</a>
+            </li>
+            <li>
+                <a href="/accounts/Admin"><i class="fa fa-desktop"></i> Danh sách tài
+                    khoản quản trị</a>
             </li>
             <li>
                 <a href="/products" class="active-menu"><i class="fa fa-desktop"></i> Danh sách sản phẩm</a>
@@ -53,49 +58,49 @@
 
             </div>
             {{!-- Begin: search-bar, plus products --}}
-         
-                <div class="row">
-                    <div class="col-md-6 col-sm-12 col-xs-12 search-section">
-                        <input type="text" id="search-bar">
-                        <div class="search-btn">
-                            <i class="search-icon ti-search"></i>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-12 col-xs-12">
-                        <a href="/products/add"><button class="btn-plus-products"> Thêm sản phẩm</button></a>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-12 col-xs-12 search-section">
+                    <input type="text" id="search-bar">
+                    <div class="search-btn">
+                        <i class="search-icon ti-search"></i>
                     </div>
                 </div>
-                {{!-- Begin: search-bar, plus products --}}
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <a href="/products/add"><button class="btn-plus-products"> Thêm sản phẩm</button></a>
+                </div>
+            </div>
+            {{!-- Begin: search-bar, plus products --}}
 
-                <!-- <div id="page-inner"> -->
-                <div class="row">
-                    {{#each products}}
-                    <div class="col-md-4 col-sm-12 col-xs-12">
-                        <div class="board">
-                            <div class="panel panel-primary">
-                                <img src={{'hinh_anh_san_phams.HinhAnh'}} class="imageDSSP" alt="iphone">
-                                <div class="inforSP">
-                                    <ul>
-                                        <li><strong>{{TenSanPham}} </strong></li>
-                                        <li>Hãng: {{'MaThuongHieu_thuong_hieu.ThuongHieu'}}</li>
-                                        <li>Giá bán: {{'loai_san_phams.DonGia'}}</li>
-                                        
-                                    </ul>
-                                    <div class="btnSuaXoa">
-                                        <button class="btnSua">sửa</button>
-                                        <button class="btnXoa">xóa</button>
-                                    </div>
+            <!-- <div id="page-inner"> -->
+            <div class="row">
+                {{#each products}}
+                <div class="col-md-4 col-sm-12 col-xs-12">
+                    <div class="board">
+                        <div class="panel panel-primary">
+                            <img src={{'hinh_anh_san_phams.HinhAnh'}} class="imageDSSP" alt="iphone">
+                            <div class="inforSP">
+                                <ul>
+                                    <li><strong>{{TenSanPham}} </strong></li>
+                                    <li>Hãng: {{'MaThuongHieu_thuong_hieu.ThuongHieu'}}</li>
+                                    <li>Giá bán: {{'loai_san_phams.DonGia'}}</li>
+
+                                </ul>
+                                <div class="btnSuaXoa">
+                                    <button class="btnSua">sửa</button>
+                                    <button class="btnXoa">xóa</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {{/each}}
                 </div>
-                <div class="page-number">
-                    <button class="ti-angle-left btn-page-number" id="pagination-left">Pre</button>
-                    <button class="ti-angle-right btn-page-number" id="pagination-right">Next</button>
-                </div>
-            
+                {{/each}}
+            </div>
+            <div class="page-number">
+                <button class="ti-angle-left btn-page-number" id="pagination-left">Pre</button>
+                <button class="ti-angle-right btn-page-number" id="pagination-right">Next</button>
+            </div>
+
         </div>
     </div>
 </div>

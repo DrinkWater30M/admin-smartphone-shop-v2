@@ -51,7 +51,7 @@ sequelize.authenticate()
     }
   })
   .catch(err => {
-    console.log('no oke');
+    console.log('no oke', err);
   });
 
 

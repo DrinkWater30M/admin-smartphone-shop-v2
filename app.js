@@ -6,12 +6,12 @@ const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const accountsRouter = require('./routes/accounts');
 
-const productsRouter = require('./components/products/productRoute');
-
-const ordersRouter = require('./routes/orders')
-const informationRouter = require('./routes/information');
+const authRouter = require('./components/auth/authRouter');
+const accountsRouter = require('./components/accounts/accountRouter');
+const productsRouter = require('./components/products/productRouter');
+const ordersRouter = require('./components/orders/orderRouter')
+const informationRouter = require('./components/information/inforRouter');
 
 const app = express();
 
@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.use('/', authRouter);
 app.use('/users', usersRouter);
 app.use('/accounts', accountsRouter);
 app.use('/products', productsRouter);
