@@ -24,7 +24,6 @@ let list = async (req, res) => {
 let addProduct = async (req, res) => {
     console.log('b',req.body)
     await productService.createProduct(req.body);
-    
     return res.send('post crud');
 }
 

@@ -7,7 +7,12 @@ router.get('/', function(req, res, next) {
   res.render('accounts/accountList', { title: 'Express' });
 });
 
-router.get('/Admin',accountController.list);
+router.get('/Admin',accountController.listAccountAdmin);
 
+router.get('/Admin/add', function(req, res, next) {
+  res.render('accounts/InsertAdmin', {  });
+});
+
+router.post('/Admin',accountController.createAccountAdmin)
 
 module.exports = router;

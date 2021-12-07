@@ -1,10 +1,25 @@
 const models = require('../../models');
 const accountService = require('./accountService');
 
-let list = async (req, res) => {
+let listAccountAdmin = async (req, res) => {
     const accountList = await accountService.list();
-    console.log("acc", accountList)
     res.render('accounts/accountAdminList', { accountList });
 }
 
-module.exports = { list: list };
+
+let info = async (req, res) => {
+    const accountList = await accountService.list();
+    res.render('information', { account: accountList[0] });
+}
+
+let createAccountAdmin = async (req, res) => {
+    console.log("aa", req.body);
+    await accountService.createNewAdmin(req.body);
+    await listAccountAdmin(req, res);
+}
+
+module.exports = { 
+    listAccountAdmin: listAccountAdmin,
+    info: info,
+    createAccountAdmin: createAccountAdmin
+};

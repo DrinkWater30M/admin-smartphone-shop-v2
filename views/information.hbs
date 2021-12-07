@@ -45,17 +45,19 @@
             <div class="col-md-4 col-sm-12 col-xs-12">
                 <ul class="list">
                     <li>Họ tên</li>
-                    <li>Số điện thoại</li>
+                    <li>Tên Đăng nhập</li>
                     <li>Địa chỉ</li>
                     <li>Email</li>
                 </ul>
             </div>
             <div class="col-md-6 col-sm-12 col-xs-12">
                 <ul class="list-info">
-                    <li><input type="text" value="Minh Lợi"></input></li>
-                    <li><input type="text" value="19001009"></input></li>
+                    {{#with account}}
+                    <li><input type="text" value="{{TenCuaHang}}"></input></li>
+                    <li><input type="text" value="{{TenDangNhap}}"></input></li>
                     <li><input type="text" value="123456 Lê Hồng Phong"></input></li>
-                    <li><input type="email" value="lienhe@gmail.com"></input></li>
+                    <li><input type="email" value="{{Email}}"></input></li>
+                    {{/with}}
                 </ul>
             </div>
             <div class="col-md-2 col-sm-12 col-xs-12">
