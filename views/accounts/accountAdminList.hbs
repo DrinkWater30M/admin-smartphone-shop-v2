@@ -47,48 +47,49 @@
         {{!-- Begin: search-bar, plus products --}}
 
         <!-- <div id="page-inner"> -->
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-md-3">
-                        <h4>Tên người sử dụng</h4>
+        <div id="page-inner">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h4>Tên người sử dụng</h4>
+                        </div>
+                        <div class="col-md-3">
+                            <h4>Tên đăng nhập</h4>
+                        </div>
+                        <div class="col-md-3">
+                            <h4>Mật khẩu</h4>
+                        </div>
+                        <div class="col-md-3">
+                            <h4>Email</h4>
+                        </div>
                     </div>
-                    <div class="col-md-3">
-                        <h4>Tên đăng nhập</h4>
-                    </div>
-                    <div class="col-md-3">
-                        <h4>Mật khẩu</h4>
-                    </div>
-                    <div class="col-md-3">
-                        <h4>Email</h4>
-                    </div>
-                </div>
-                {{#each accountList}}
-                <div class="row">
-                    <div class="panel-body">
-                        <div class="alert alert-success">
+                    {{#each accountList}}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="alert alert-success">
+                                <div class="DSTK">
 
-                            <div class="DSTK">
+                                    <div class="col-md-3">
+                                        {{TenCuaHang}}
+                                    </div>
+                                    <div class="col-md-3">
+                                        {{TenDangNhap}}
+                                    </div>
+                                    <div class="col-md-3">
+                                        {{MatKhau}}
+                                    </div>
+                                    <div class="col-md-3">
+                                        {{Email}}
+                                    </div>
 
-                                <div class="col-md-3">
-                                    {{TenCuaHang}}
-                                </div>
-                                <div class="col-md-3">
-                                    {{TenDangNhap}}
-                                </div>
-                                <div class="col-md-3">
-                                    {{MatKhau}}
-                                </div>
-                                <div class="col-md-3">
-                                    {{Email}}
                                 </div>
 
                             </div>
-
                         </div>
                     </div>
-                </div> 
-                {{/each}}
+                    {{/each}}
+                </div>
             </div>
         </div>
     </div>
