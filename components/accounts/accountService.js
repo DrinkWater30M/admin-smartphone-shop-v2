@@ -20,7 +20,11 @@ let createNewAdmin = async (data) => {
     }
     MaCuaHang = MaCuaHang + (max + 1);
 
-
+    //Kiem tra tên đăng nhập đã tồn tại hay chưa
+    for (let i = 0; i < accountAdmin.length; i++) {
+       if (accountAdmin[i].TenDangNhap == data.username)
+        return false
+    }
     return new Promise(async (resolve, reject) => {
         try {
             await models.cua_hang.create({

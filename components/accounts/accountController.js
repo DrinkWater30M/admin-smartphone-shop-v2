@@ -13,12 +13,15 @@ let info = async (req, res) => {
 }
 
 let createAccountAdmin = async (req, res) => {
-    console.log("aa", req.body);
-    await accountService.createNewAdmin(req.body);
-    await listAccountAdmin(req, res);
+    const check = await accountService.createNewAdmin(req.body);
+    if (check == false) {
+        res.render('accounts/InsertAdmin', { message: 'Tên đăng nhập đã tồn tại!' })
+    }
+    else
+        await listAccountAdmin(req, res);
 }
 
-module.exports = { 
+module.exports = {
     listAccountAdmin: listAccountAdmin,
     info: info,
     createAccountAdmin: createAccountAdmin

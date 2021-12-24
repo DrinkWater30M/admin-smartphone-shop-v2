@@ -34,7 +34,8 @@
             </h1>
             <div class="container">
                 <div class="row">
-                    <form action="/accounts/Admin" method="post" >
+                    {{!-- action="/accounts/Admin" --}}
+                    <form method="post">
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputEmail4">Tên người sử dụng</label>
@@ -52,13 +53,17 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputPassword4">Mật khẩu</label>
-                                <input type="password" class="form-control" name="password"  placeholder="Password">
+                                <input type="password" class="form-control" name="password" placeholder="Password">
                             </div>
                         </div>
                 </div>
+                {{#if message}}
+                <div><label>{{message}}</label></div>
+                {{/if}}
                 <button type="submit" class="btn btn-primary">Sign up</button>
+
             </div>
-            
+
             </form>
         </div>
     </div>
