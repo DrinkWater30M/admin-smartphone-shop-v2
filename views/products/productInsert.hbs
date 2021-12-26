@@ -41,14 +41,16 @@
 
     </div>
     <div class="content">
-
         <div class="row">
             <div class="col-md-4 col-sm-12 col-xs-12">
                 <div class="left-content">
-                    <div class="image-main">
-                        <button class="plus-image">thêm hình ảnh</button>
+                    <form class="form-image" action="#" method="post" id="form-image">
+                        <input class="d-none" type="file" name="Image" id="image" accept=".png, .jpeg" multiple="">
+                    </form>
+                    <div class="image-main justify-content-center position-relative" id="container-image">
+   	                <!-- Image will be show here-->
                     </div>
-                    <div class="image-detail"></div>
+                    <div id="add-image-btn"><i class="fas fa-plus-square fa-5x"></i></i></div>
                 </div>
             </div>
             <div class="col-md-8 col-sm-12 col-xs-12 add-product">
@@ -72,11 +74,14 @@
             </div>
         </div>
         <div class="btn-submit-cancel-section">
-            <button type="submit" id="btn-submit-product">Submit</button>
-            <button type="button" class="btn-cancel-product">Cancel</button>
+            <button type="button" id="add-product-btn">Thêm</button>
+            <button type="button" id="cancel-btn">Hủy</button>
         </div>
 
 
     </div>
 
 </div>
+
+{{!-- Handle for show image before upload --}}
+<script src="/javascripts/product-insert-preview-image.js"></script>
