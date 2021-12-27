@@ -1,12 +1,11 @@
 var images = [];
 var addImageBtn = document.getElementById('add-image-btn');
 var inputFileTag = document.getElementById('image');
-var addProductBtn = document.getElementById('add-product-btn');
 
 function checkDuplicate(name) {
     let image = true;
     if (images.length > 0) {
-        for (e = 0; e < images.length; e++) {
+        for (let e = 0; e < images.length; e++) {
             if (images[e].name == name) {
                 image = false;
                 break;
@@ -38,7 +37,7 @@ function imageSelect() {
     let image = document.getElementById('image').files;
 
     for (i = 0; i < image.length; i++) {
-          if (checkDuplicate(images, image[i].name)) {
+          if (checkDuplicate(image[i].name)) {
      images.push({
                   "name" : image[i].name,
                   "url" : URL.createObjectURL(image[i]),
@@ -46,7 +45,7 @@ function imageSelect() {
             })
           } else 
           {
-               alert(image[i].name + "Có vài ảnh đã được thêm!");
+               alert(image[i].name + " đã được thêm!");
           }
     }
 
@@ -74,9 +73,35 @@ function main(){
     })
 
     //Handle for add product btn
-    addProductBtn.addEventListener('click', ()=>{
+    $('#add-product-btn').on('click', ()=>{
         //Get data images
-        console.log(getImageData())
+        let data = getImageData();
+
+        //Call ajax
+        $.ajax({
+            url: '/api/upload-images',
+            type: 'POST',
+            processData: false,
+            contentType: false,
+            cache: false,
+            data: data,
+            success: function(res){
+                console.log(res);
+                alert('Thêm sản phẩm thành công!');
+            },
+            error: function(xhr, status, error){
+                console.log(error);
+
+                //Create message
+                let message = "Đã có lỗi xảy ra, vui lòng thử lại!";
+
+                //Get message from server
+                if(xhr.responseText) {message = xhr.responseText.error;}
+
+                //Notification
+                alert(message);
+            }
+        })
     })
 }
 
