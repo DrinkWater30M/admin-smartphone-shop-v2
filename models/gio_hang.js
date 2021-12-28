@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('gio_hang', {
     MaKhachHang: {
-      type: DataTypes.CHAR(10),
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       references: {
@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     MaSanPham: {
-      type: DataTypes.CHAR(10),
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       references: {
@@ -20,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     LoaiSanPham: {
-      type: DataTypes.CHAR(10),
+      type: DataTypes.CHAR(25),
       allowNull: false,
       primaryKey: true,
       references: {

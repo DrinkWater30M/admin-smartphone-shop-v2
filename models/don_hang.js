@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true
     },
     MaKhachHang: {
-      type: DataTypes.CHAR(10),
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: 'khach_hang',
@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     MaSanPham: {
-      type: DataTypes.CHAR(10),
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: 'loai_san_pham',
@@ -23,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     LoaiSanPham: {
-      type: DataTypes.CHAR(10),
+      type: DataTypes.CHAR(25),
       allowNull: false,
       references: {
         model: 'loai_san_pham',

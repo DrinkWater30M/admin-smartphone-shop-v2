@@ -1,5 +1,6 @@
 'use strict'
 const cloudinary = require('../utils/cloudinary');
+const productService = require('../components/products/productService');
 
 class ApiController{
     async uploadImages(req, res){
@@ -13,15 +14,26 @@ class ApiController{
         //Recevie result from promise
         Promise.all(resPromises)
         .then(async (urlImages) => {
-           //arrUrlImages chính là toàn bộ đường link ảnh nhận được từ promise trước đó
+           //urlImages chính là toàn bộ đường link ảnh nhận được từ promise trước đó
+           let data = req.body;
+           data.urlImages = urlImages;
 
            //Write data to DB
+           try{
+                //Add product
+                await productService.addProduct(data);
 
-           //Return result client
-           res.status(200).send(urlImages);
+                //Return result client
+                res.status(200).json({redirectUrl: '/products'});
+           }
+           catch(error){
+               console.log(error);
+               res.status(500).json({error: "Server đã có lỗi gì đó!"});
+           }
         })
         .catch((error) => {
             console.log(error);
+            res.status(500).json({error: "Server đã có lỗi gì đó!"});
         })
     }
 }
