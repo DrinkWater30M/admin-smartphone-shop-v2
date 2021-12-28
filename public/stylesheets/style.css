@@ -1,5 +1,4 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -131,6 +130,10 @@ ul {
   line-height: 50px;
 }
 
+.content {
+  padding: 0 0 50px 0;
+}
+
 .content .page-number {
   position: flex;
   text-align: right;
@@ -178,17 +181,6 @@ ul {
 .content .right-content {
   display: inline-block;
 }
-.add-product .product-detail {
-  text-align: right;
-}
-
-.add-product .product-detail li {
-  margin: 5px 0;
-}
-
-.product-detail li input {
-  border-radius: 4px;
-}
 
 .add-product > h3 > input {
   border-radius: 4px;
@@ -196,25 +188,63 @@ ul {
 }
 
 .content .btn-submit-cancel-section {
-  text-align: right;
+  padding-right: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+  gap: 30px;
 }
 
-.btn-submit-cancel-section #cancel-btn {
-  margin-right: 20%;
-  margin-left: 10px;
+.content .btn-submit-cancel-section button {
+  font-weight: bold;
 }
 
-#add-product-btn,
-#cancel-btn {
-  font-size: 16px;
-  width: 70px;
-  border-radius: 4px;
+/* CSS for product information in products/add */
+.product-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
 }
 
-#add-product-btn {
-  background-color: rgb(17, 219, 101);
+.product-detail h3 {
+  color: #f36a5a;
+  font-weight: bold;
 }
 
-#cancel-btn {
-  background-color: rgb(255, 0, 0);
+.product-detail .product-inf {
+  margin-top: 30px;
+  width: 100%;
+  padding: 0 50px;
+}
+
+.product-detail .product-inf li {
+  padding: 10px 0;
+}
+
+.product-detail .product-inf li label {
+  font-size: 1.2em;
+}
+.product-detail .product-inf li input,
+.product-detail .product-inf li textarea {
+  width: 100%;
+  outline: none;
+  padding: 5px 10px;
+  font-size: 1.5em;
+}
+
+.product-detail .product-inf li textarea {
+  height: 120px;
+}
+
+.product-detail .product-inf .product-inf-category h4 {
+  font-weight: bold;
+  font-size: 1.3em;
+  color: rgb(73, 124, 218);
+}
+
+.product-detail .product-inf .product-inf-category .category-btn {
+  margin-top: 10px;
+  font-weight: bold;
 }

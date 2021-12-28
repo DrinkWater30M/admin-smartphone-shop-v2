@@ -1,9 +1,5 @@
-const { models } = require('../../models');
-const { Op, INTEGER } = require("sequelize");
-const thuong_hieu = require('../../models/thuong_hieu');
-
-
-
+const { models, sequelize } = require('../../models');
+const { Op, INTEGER, QueryTypes } = require("sequelize");
 
 let list = async (page = 0, itemPerPage = 9, name = '') => {
     console.log('name', page)
@@ -111,9 +107,68 @@ let createProduct = async (data) => {
     })
 }
 
+let addProduct = async (data)=>{
+    try{
+        //Generate idBrand
+        let idBrand = data.brand.substring(0, 3);
+        let brand = await sequelize.query(
+            `SELECT * FROM thuong_hieu WHERE thuong_hieu.MaThuongHieu = '${idBrand}'`,
+            {type: QueryTypes.SELECT}
+        );
+        if(brand.length == 0){
+            await sequelize.query(
+                `INSERT INTO thuong_hieu(MaThuongHieu, ThuongHieu) VALUE('${idBrand}', '${data.brand}');`)
+        }
 
+        //Insert product
+        await sequelize.query(
+            `INSERT INTO san_pham(TenSanPham, MaThuongHieu, MoTa)
+            VALUE('${data.productName}', '${idBrand}', '${data.description}');`
+        )
+        
+        //Get id product after add
+        let newProduct = (await sequelize.query(
+            `SELECT san_pham.MaSanPham FROM san_pham  WHERE san_pham.TenSanPham = '${data.productName}'`,
+            {type: QueryTypes.SELECT}
+        ))
+        let idProduct = newProduct[0].MaSanPham;
+        //Insert images
+        for(let i = 0; i < data.urlImages.length; i++){
+            await sequelize.query(
+                `INSERT INTO hinh_anh_san_pham(MaSanPham, HinhAnh)
+                VALUE (${idProduct}, '${data.urlImages[i].url}');`
+            )
+        }
+
+        //Insert category
+        if(!Array.isArray(data.price)){
+            let idCategory = (new Date()).toISOString();
+                await sequelize.query(
+                    `INSERT INTO loai_san_pham(MaSanPham, LoaiSanPham, DonGia, SoLuong, Ram, Rom, 
+                        ManHinh, DoPhanGiai, ChipXuLi, Pin, MauSac)
+                    VALUE(${idProduct}, '${idCategory}', ${data.price}, ${data.amount}, ${data.ram}, ${data.rom},
+                        '${data.screen}', '${data.resolution}', '${data.cpu}', ${data.battery}, '${data.color}');`
+                )
+        }
+        else{
+            for(let i = 0; i < data.price.length; i++){
+                let idCategory = (new Date()).toISOString();
+                await sequelize.query(
+                    `INSERT INTO loai_san_pham(MaSanPham, LoaiSanPham, DonGia, SoLuong, Ram, Rom, 
+                        ManHinh, DoPhanGiai, ChipXuLi, Pin, MauSac)
+                    VALUE(${idProduct}, '${idCategory}', ${data.price[i]}, ${data.amount[i]}, ${data.ram[i]}, ${data.rom[i]},
+                        '${data.screen[i]}', '${data.resolution[i]}', '${data.cpu[i]}', ${data.battery[i]}, '${data.color[i]}');`
+                )
+            }
+        }
+    }
+    catch(error){
+        console.log(error);
+    }
+}
 
 module.exports = {
     list: list,
-    createProduct: createProduct
+    createProduct: createProduct,
+    addProduct: addProduct
 }

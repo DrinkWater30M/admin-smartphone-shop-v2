@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('loai_san_pham', {
     MaSanPham: {
-      type: DataTypes.CHAR(10),
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       references: {
@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     LoaiSanPham: {
-      type: DataTypes.CHAR(10),
+      type: DataTypes.CHAR(25),
       allowNull: false,
       primaryKey: true
     },
@@ -23,16 +23,12 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    HinhAnhMinhHoa: {
-      type: DataTypes.STRING(200),
-      allowNull: true
-    },
     Ram: {
-      type: DataTypes.STRING(10),
+      type: DataTypes.INTEGER,
       allowNull: true
     },
     Rom: {
-      type: DataTypes.STRING(10),
+      type: DataTypes.INTEGER,
       allowNull: true
     },
     ManHinh: {
@@ -48,7 +44,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     Pin: {
-      type: DataTypes.STRING(20),
+      type: DataTypes.INTEGER,
       allowNull: true
     },
     MauSac: {
