@@ -3,7 +3,7 @@ const multer = require('multer');
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         //Hỉnh ảnh sẽ chưa trong folder uploads
-        cb(null, './uploads/'); 
+        cb(null, './public/uploads/'); 
     },
 
     filename: (req, file, cb) => {
