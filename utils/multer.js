@@ -1,9 +1,12 @@
 const multer = require('multer');
+const fs = require('fs');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         //Hỉnh ảnh sẽ chưa trong folder uploads
-        cb(null, './public/uploads/'); 
+        const path = './public/uploads/';
+        fs.mkdirSync(path, { recursive: true });
+        cb(null, path);
     },
 
     filename: (req, file, cb) => {
