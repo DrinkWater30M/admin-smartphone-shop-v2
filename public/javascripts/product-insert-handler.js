@@ -88,30 +88,42 @@ function getProductData(){
     return form;
 }
 
+//Validate input data
+function validateInputData(){
+    //Check empty data
+    let inputsData = document.querySelectorAll('.product-inf .inf');
+    let emptyData = false;
+
+    for(let i = 0; i < inputsData.length; i++){
+        if(inputsData[i].value == ""){
+            emptyData = true;
+            break;
+        }
+    }
+    
+    //Check input images
+    if(images.length == 0){emptyData = true;}
+
+    if(emptyData){
+        //Notification
+        errorData.innerText = "Có trường dữ liệu nào đó bị trống!";
+        inputsData.forEach(inputData => {
+            inputData.addEventListener('focus', ()=>{
+                errorData.innerText = "";
+            })
+        })
+
+        return false;
+    }
+    else{
+        return true;
+    }
+}
+
 function main(){
     //PRODUCT INFORMATION
     addCategoryProductBtn.addEventListener('click', ()=>{
-        //Check empty data
-        let inputsData = document.querySelectorAll('.product-inf .inf');
-        let emptyData = false;
-
-        for(let i = 0; i < inputsData.length; i++){
-            if(inputsData[i].value == ""){
-                emptyData = true;
-                break;
-            }
-        }
-
-        if(emptyData){
-            //Notification
-            errorData.innerText = "Có trường dữ liệu nào đó bị trống!";
-            inputsData.forEach(inputData => {
-                inputData.addEventListener('focus', ()=>{
-                    errorData.innerText = "";
-                })
-            })
-        }
-        else{
+        if(validateInputData()){
             //Add new category, change necessary value
             let categoryProductCurrent = document.querySelector('.product-inf-category:last-child').cloneNode(true);
             let sequenceCategoryProduct = Number.parseInt(categoryProductCurrent.querySelector('span').textContent) + 1;
@@ -137,11 +149,8 @@ function main(){
 
     //Handle for add product btn
     $('#add-product-btn').on('click', ()=>{
-        //Check images
-        if(images.length == 0){
-            errorData.innerText = "Có trường dữ liệu nào đó bị trống!";
-        }
-            else{
+        //Validate input data
+        if(validateInputData()){
             //Get data images
             let formImage = getImageData();
 
