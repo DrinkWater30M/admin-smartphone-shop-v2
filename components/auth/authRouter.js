@@ -3,14 +3,17 @@ const router = express.Router();
 const passport = require("../../auth/passport");
 
 //TODO: Tam de man hinh chinh, can sua thanh man hinh dang nhap
+router.get('/login', function(req, res, next) {
+    res.render('authen/signIn.hbs', { layout: null});
+});
 router.get('/', function(req, res, next) {
     res.render('index');
 });
-router.post('/',
+router.post('/login', 
     passport.authenticate('local', {
-        successRedirect: '/products',
-        failureRedirect: '/products',
-        failureFlash: true
+        successRedirect: '/',
+        failureRedirect: '/login',
+        // failureFlash: true
     })
 
 );
