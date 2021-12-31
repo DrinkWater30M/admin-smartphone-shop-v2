@@ -1,7 +1,6 @@
 class Authen{
 
     isLoggedIn (req, res, next){    
-        console.log("🚀 ~ file: authen.js ~ line 4 ~ Authen ~ isLoggedIn ~ isLoggedIn", )
         if (req.isAuthenticated()){
             return next();
         }
