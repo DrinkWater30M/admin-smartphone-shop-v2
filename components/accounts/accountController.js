@@ -22,11 +22,19 @@ let createAccountAdmin = async (req, res) => {
 }
 
 let listAccountCustomer = async (req, res) => {
-
+    const accountList = await accountService.listCustomer();
+    let accountBlocked = 0;
+    accountList.forEach(value => {
+        if (value.is_block === 0)
+            accountBlocked++;
+    });
+    const accountActive = accountList.length - accountBlocked;
+    res.render('accounts/accountList', { accountList, numberAccount: accountList.length, accountBlocked, accountActive });
 }
 
 module.exports = {
     listAccountAdmin: listAccountAdmin,
+    listAccountCustomer: listAccountCustomer,
     info: info,
     createAccountAdmin: createAccountAdmin
 };

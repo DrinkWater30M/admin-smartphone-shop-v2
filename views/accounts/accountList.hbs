@@ -48,7 +48,7 @@
                     <div class="panel panel-primary">
                         <div class="number">
                             <h3>
-                                <h3>100</h3>
+                                <h3>{{numberAccount}}</h3>
                                 <small>Tổng số tài khoản</small>
                             </h3>
                         </div>
@@ -61,7 +61,7 @@
                     <div class="panel panel-primary">
                         <div class="number">
                             <h3>
-                                <h3>90</h3>
+                                <h3>{{accountActive}}</h3>
                                 <small>Số tài khoản có thể hoạt động</small>
                             </h3>
                         </div>
@@ -74,7 +74,7 @@
                     <div class="panel panel-primary">
                         <div class="number">
                             <h3>
-                                <h3>10</h3>
+                                <h3>{{accountBlocked}}</h3>
                                 <small>Số tài khoản đang bị khóa</small>
                             </h3>
                         </div>
@@ -90,51 +90,41 @@
                     </div>
 
                     <div class="panel-body">
+                        {{#each accountList}}
+                        {{#if is_block}}
                         <div class="alert alert-success">
                             <div class="DSTK">
-                                <span class="space">Tên tài khoản: <strong>anhminh0401</strong></span>
-                                <span>Email: <strong>anhminh0401@abc.com</strong></span>
+                                <div class="col-md-6">
+                                <span class="space">Tên người dùng: <strong>{{HoTen}}</strong></span></div>
+                                <div class="col-md-4">
+                                <span>Email: <strong>{{Email}}</strong></span></div>
+                                <div class="col-md-2">
                                 <div class="btnDSTK">
                                     <button>xóa</button>
                                     <button>khóa</button>
-                                    <button>mở</button>
+                                </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="alert alert-success">
-                            <div class="DSTK">
-                                <span class="space">Tên tài khoản: <strong>anhminh04</strong></span>
-                                <span>Email: <strong>abc@abc.com</strong></span>
-                                <div class="btnDSTK">
-                                    <button>xóa</button>
-                                    <button>khóa</button>
-                                    <button>mở</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="alert alert-success">
-                            <div class="DSTK">
-                                <span class="space">Tên tài khoản: <strong>anhminh0404</strong></span>
-                                <span>Email: <strong>haha@abc.com</strong></span>
-                                <div class="btnDSTK">
-                                    <button>xóa</button>
-                                    <button>khóa</button>
-                                    <button>mở</button>
-                                </div>
-                            </div>
-                        </div>
+                        {{else}}
                         <div class="alert alert-danger">
                             <div class="DSTK">
-                                <span class="space">Tên tài khoản: <strong>anhminh0403</strong></span>
-                                <span>Email: <strong>khongco@abc.com</strong></span>
+                                <div class="col-md-6">
+                                <span class="space">Tên người dùng: <strong>{{HoTen}}</strong></span></div>
+                                <div class="col-md-4">
+                                <span>Email: <strong>{{Email}}</strong></span></div>
+                                <div class="col-md-2">
                                 <div class="btnDSTK">
                                     <button>xóa</button>
-                                    <!-- <button>khóa</button> -->
                                     <button>mở</button>
+                                </div>
                                 </div>
                             </div>
                         </div>
+                        {{/if}}
+                        {{/each}}
                     </div>
+
                 </div>
             </div>
         </div>

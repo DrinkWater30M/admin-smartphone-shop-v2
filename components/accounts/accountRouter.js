@@ -3,9 +3,7 @@ var router = express.Router();
 const accountController = require("./accountController");
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('accounts/accountList', { title: 'Express' });
-});
+router.get('/', accountController.listAccountCustomer);
 
 router.get('/Admin',accountController.listAccountAdmin);
 
