@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     MatKhau: {
-      type: DataTypes.STRING(20),
+      type: DataTypes.TEXT,
       allowNull: false
     },
     Email: {

@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const { models } = require('../../models');
 const { Op, INTEGER } = require("sequelize");
 
@@ -25,13 +26,17 @@ let createNewAdmin = async (data) => {
        if (accountAdmin[i].TenDangNhap == data.username)
         return false
     }
+    //hash
+    let saltRounds = 10;
+    let hashPassword = await bcrypt.hash(data.password, saltRounds);
+
     return new Promise(async (resolve, reject) => {
         try {
             await models.cua_hang.create({
                 MaCuaHang: MaCuaHang,
                 TenCuaHang: data.name,
                 TenDangNhap: data.username,
-                MatKhau: data.password,
+                MatKhau: hashPassword,
                 Email: data.email
             });
             resolve()

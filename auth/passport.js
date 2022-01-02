@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 var passport = require('passport')
     , LocalStrategy = require('passport-local').Strategy;
 const { models } = require('../models');
@@ -45,9 +46,9 @@ passport.deserializeUser(function(user, done) {
     done(null, user);
 });
 
-
-function validPassword(password1, password2) {
-    return password1 === password2;
+ 
+async function validPassword(password, passwordHash) {
+    return await bcrypt.compare(password, passwordHash);
 }
 
 module.exports = passport;
