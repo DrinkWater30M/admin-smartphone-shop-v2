@@ -2,13 +2,13 @@ const models = require('../../models');
 const accountService = require('./accountService');
 
 let listAccountAdmin = async (req, res) => {
-    const accountList = await accountService.list();
+    const accountList = await accountService.listAdmin();
     res.render('accounts/accountAdminList', { accountList });
 }
 
 
 let info = async (req, res) => {
-    const accountList = await accountService.list();
+    const accountList = await accountService.listAdmin();
     res.render('information', { account: accountList[0] });
 }
 
@@ -19,6 +19,10 @@ let createAccountAdmin = async (req, res) => {
     }
     else
         await listAccountAdmin(req, res);
+}
+
+let listAccountCustomer = async (req, res) => {
+
 }
 
 module.exports = {

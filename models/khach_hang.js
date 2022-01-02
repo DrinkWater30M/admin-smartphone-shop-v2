@@ -26,6 +26,11 @@ module.exports = function(sequelize, DataTypes) {
     DiaChiGiaoHang: {
       type: DataTypes.TEXT,
       allowNull: true
+    },
+    is_block: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: 1
     }
   }, {
     sequelize,

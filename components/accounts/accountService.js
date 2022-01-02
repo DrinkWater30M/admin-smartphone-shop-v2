@@ -2,7 +2,7 @@ const { models } = require('../../models');
 const { Op, INTEGER } = require("sequelize");
 
 
-let list = async () => {
+let listAdmin = async () => {
     return models.cua_hang.findAll({raw: true});
 }
 
@@ -42,7 +42,12 @@ let createNewAdmin = async (data) => {
 
 }
 
+let listCustomer = async () => {
+    return models.khach_hang.findAll({raw: true});
+}
+
 module.exports = {
-    list: list,
+    listAdmin: listAdmin,
+    listCustomer: listCustomer,
     createNewAdmin: createNewAdmin
 }
