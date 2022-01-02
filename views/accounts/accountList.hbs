@@ -92,32 +92,42 @@
                     <div class="panel-body">
                         {{#each accountList}}
                         {{#if is_block}}
-                        <div class="alert alert-success">
+                        <div class="alert alert-danger">
                             <div class="DSTK">
                                 <div class="col-md-6">
-                                <span class="space">Tên người dùng: <strong>{{HoTen}}</strong></span></div>
-                                <div class="col-md-4">
-                                <span>Email: <strong>{{Email}}</strong></span></div>
-                                <div class="col-md-2">
-                                <div class="btnDSTK">
-                                    <button>xóa</button>
-                                    <button>khóa</button>
+                                    <span class="space">Tên người dùng: <strong>{{HoTen}}</strong></span>
                                 </div>
+                                <div class="col-md-4">
+                                    <span>Email: <strong>{{Email}}</strong></span>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="btnDSTK">
+                                        <form method="post">
+                                            <button name="choose" value="del">xóa</button>
+                                            <button name="choose" value="unblock">mở</button>
+                                            <input name="account_id" type="hidden" value={{MaKhachHang}}>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         {{else}}
-                        <div class="alert alert-danger">
+                        <div class="alert alert-success">
                             <div class="DSTK">
                                 <div class="col-md-6">
-                                <span class="space">Tên người dùng: <strong>{{HoTen}}</strong></span></div>
-                                <div class="col-md-4">
-                                <span>Email: <strong>{{Email}}</strong></span></div>
-                                <div class="col-md-2">
-                                <div class="btnDSTK">
-                                    <button>xóa</button>
-                                    <button>mở</button>
+                                    <span class="space">Tên người dùng: <strong>{{HoTen}}</strong></span>
                                 </div>
+                                <div class="col-md-4">
+                                    <span>Email: <strong>{{Email}}</strong></span>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="btnDSTK">
+                                        <form method="post">
+                                            <button name="choose" value="del">xóa</button>
+                                            <button name="choose" value="block">khóa</button>
+                                            <input name="account_id" type="hidden" value={{MaKhachHang}}>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>

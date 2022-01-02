@@ -32,9 +32,20 @@ let listAccountCustomer = async (req, res) => {
     res.render('accounts/accountList', { accountList, numberAccount: accountList.length, accountBlocked, accountActive });
 }
 
+let handlingAccount = async (req, res) => {
+    if (req.body.choose === 'del')
+        await accountService.delAccount(req.body);
+    else if (req.body.choose === 'block')
+        await accountService.blockAccount(req.body);
+    else if (req.body.choose === 'unblock')
+        await accountService.unblockAccount(req.body);
+    await listAccountCustomer(req, res)
+}
+
 module.exports = {
     listAccountAdmin: listAccountAdmin,
     listAccountCustomer: listAccountCustomer,
     info: info,
-    createAccountAdmin: createAccountAdmin
+    createAccountAdmin: createAccountAdmin,
+    handlingAccount: handlingAccount
 };

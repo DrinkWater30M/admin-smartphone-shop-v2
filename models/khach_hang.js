@@ -30,7 +30,12 @@ module.exports = function(sequelize, DataTypes) {
     is_block: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: 1
+      defaultValue: 0
+    },
+    is_del: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: 0
     }
   }, {
     sequelize,

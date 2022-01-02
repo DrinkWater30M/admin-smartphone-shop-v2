@@ -43,11 +43,35 @@ let createNewAdmin = async (data) => {
 }
 
 let listCustomer = async () => {
-    return models.khach_hang.findAll({raw: true});
+    return models.khach_hang.findAll({where: {is_del: 0} ,raw: true});
+}
+
+const delAccount = async (data) => {
+    let account = await models.khach_hang.findOne({where: {MaKhachHang: data.account_id}})
+    if (account) {
+        await models.khach_hang.update({is_del: 1}, {where: {MaKhachHang: data.account_id}})
+    }
+}
+
+const blockAccount = async (data) => {
+    let account = await models.khach_hang.findOne({where: {MaKhachHang: data.account_id}})
+    if (account) {
+        await models.khach_hang.update({is_block: 1}, {where: {MaKhachHang: data.account_id}})
+    }
+}
+
+const unblockAccount = async (data) => {
+    let account = await models.khach_hang.findOne({where: {MaKhachHang: data.account_id}})
+    if (account) {
+        await models.khach_hang.update({is_block: 0}, {where: {MaKhachHang: data.account_id}})
+    }
 }
 
 module.exports = {
     listAdmin: listAdmin,
     listCustomer: listCustomer,
-    createNewAdmin: createNewAdmin
+    createNewAdmin: createNewAdmin,
+    delAccount: delAccount,
+    blockAccount: blockAccount,
+    unblockAccount: unblockAccount
 }
