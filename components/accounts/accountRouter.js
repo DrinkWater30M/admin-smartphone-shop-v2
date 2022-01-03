@@ -11,6 +11,8 @@ router.get('/Admin/add', function(req, res, next) {
   res.render('accounts/InsertAdmin', {  });
 });
 
+router.get('/profile',accountController.info)
+
 router.post('/Admin/add',accountController.createAccountAdmin);
 
 router.post('/', accountController.handlingAccount);

@@ -1,0 +1,77 @@
+<nav class="navbar-default navbar-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="main-menu">
+
+            <li>
+                <a href="/"><i class="fa fa-dashboard"></i> Bảng điều khiển</a>
+            </li>
+            <li>
+                <a href="/accounts"><i class="fa fa-desktop"></i> Danh sách tài
+                    khoản</a>
+            </li>
+            <li>
+                <a href="/accounts/Admin"><i class="fa fa-desktop"></i> Danh sách tài
+                    khoản quản trị</a>
+            </li>
+            <li>
+                <a href="/products"><i class="fa fa-desktop"></i> Danh sách sản phẩm</a>
+            </li>
+            <li>
+                <a href="/orders"><i class="fa fa-desktop"></i> Danh sách đơn hàng</a>
+            </li>
+            <li>
+                <a href="/information"><i class="fa fa-desktop"></i> Thông tin cửa hàng</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!-- /. NAV SIDE  -->
+<div id="page-wrapper">
+    <div class="header">
+        <h1 class="page-header">
+            Thông tin cá nhân
+            <!-- <small>This is your UI elements section</small> -->
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#">Trang chủ</a></li>
+            <li><a href="#">Thông tin cá nhân </a></li>
+            <li class="active">Dữ liệu</li>
+        </ol>
+
+    </div>
+    <div class="profile">
+        <div id="page-inner">
+
+            <div class="row">
+                <div class="col-md-4 col-sm-12 col-xs-12">
+                    <ul class="list">
+                        <li>Tên người sử dụng</li>
+                        <li>Tên đăng nhập</li>
+                        <li>Email</li>
+                    </ul>
+                </div>
+                <div class="col-md-8 col-sm-12 col-xs-12">
+                    <ul class="list-info">
+                        {{#with infoAccount}}
+                        <li><input type="text" value="{{TenNguoiSuDung}}"></input></li>
+                        <li><input type="text" value="{{TenDangNhap}}"></input></li>
+                        <li><input type="email" value="{{Email}}"></input></li>
+                        {{/with}}
+                    </ul>
+                </div>
+                {{!-- <div class="col-md-2 col-sm-12 col-xs-12">
+                    <div class="avatar"><img src="/images/bg-img.jpg" alt=""></div>
+                    <div class="name">MAL<i class="fa fa-pencil-square-o" aria-hidden="true"></i></div> --}}
+                    {{!--
+                </div> --}}
+            </div>
+            <div class="row">
+                <a href="#" class="change_password">Thay đổi mật khẩu</a>
+            </div>
+            <div class="row">
+                <div class="col-12 btn_update_profile">
+                <button type="submit">Cập nhật</button></div>
+            </div>
+        </div>
+    </div>
+</div>

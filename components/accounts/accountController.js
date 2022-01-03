@@ -8,8 +8,8 @@ let listAccountAdmin = async (req, res) => {
 
 
 let info = async (req, res) => {
-    const accountList = await accountService.listAdmin();
-    res.render('information', { account: accountList[0] });
+    const infoAccount = await accountService.getOneAccountById(req.user.MaAdmin);
+    res.render('accounts/profile', { infoAccount });
 }
 
 let createAccountAdmin = async (req, res) => {

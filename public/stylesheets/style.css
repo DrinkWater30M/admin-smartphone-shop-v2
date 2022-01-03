@@ -248,3 +248,14 @@ ul {
   margin-top: 10px;
   font-weight: bold;
 }
+
+
+.profile .btn_update_profile {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.profile .change_password {
+  font-size: 18px;
+}

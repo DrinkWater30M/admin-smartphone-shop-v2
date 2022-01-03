@@ -59,11 +59,16 @@ const unblockAccount = async (data) => {
     }
 }
 
+const getOneAccountById = async (id) => {
+    return models.quan_tri_vien.findOne({where: {MaAdmin: id}, raw: true});
+}
+
 module.exports = {
     listAdmin: listAdmin,
     listCustomer: listCustomer,
     createNewAdmin: createNewAdmin,
     delAccount: delAccount,
     blockAccount: blockAccount,
-    unblockAccount: unblockAccount
+    unblockAccount: unblockAccount,
+    getOneAccountById: getOneAccountById
 }
