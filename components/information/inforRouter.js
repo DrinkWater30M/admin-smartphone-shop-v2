@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
-const accountController = require("../accounts/accountController");
+const inforController = require("./inforController");
 
 /* GET home page. */
-router.get('/', accountController.info);
+router.get('/', inforController.info);
 
 module.exports = router;

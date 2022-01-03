@@ -44,19 +44,19 @@
         <div class="row">
             <div class="col-md-4 col-sm-12 col-xs-12">
                 <ul class="list">
-                    <li>Họ tên</li>
-                    <li>Tên Đăng nhập</li>
-                    <li>Địa chỉ</li>
+                    <li>Tên cửa hàng</li>
+                    <li>Địa chỉ cửa hàng</li>
                     <li>Email</li>
+                    <li>Số điện thoại</li>
                 </ul>
             </div>
             <div class="col-md-6 col-sm-12 col-xs-12">
                 <ul class="list-info">
-                    {{#with account}}
+                    {{#with infoShop}}
                     <li><input type="text" value="{{TenCuaHang}}"></input></li>
-                    <li><input type="text" value="{{TenDangNhap}}"></input></li>
-                    <li><input type="text" value="123456 Lê Hồng Phong"></input></li>
+                    <li><input type="text" value="{{DiaChiCuaHang}}"></input></li>
                     <li><input type="email" value="{{Email}}"></input></li>
+                    <li><input type="email" value="{{SoDienThoai}}"></input></li>
                     {{/with}}
                 </ul>
             </div>

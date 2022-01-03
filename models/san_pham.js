@@ -22,6 +22,11 @@ module.exports = function(sequelize, DataTypes) {
     MoTa: {
       type: DataTypes.TEXT,
       allowNull: true
+    },
+    is_del: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: 0
     }
   }, {
     sequelize,

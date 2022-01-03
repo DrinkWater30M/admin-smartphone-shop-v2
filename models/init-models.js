@@ -6,6 +6,7 @@ var _gio_hang = require("./gio_hang");
 var _hinh_anh_san_pham = require("./hinh_anh_san_pham");
 var _khach_hang = require("./khach_hang");
 var _loai_san_pham = require("./loai_san_pham");
+var _quan_tri_vien = require("./quan_tri_vien");
 var _san_pham = require("./san_pham");
 var _thuong_hieu = require("./thuong_hieu");
 
@@ -17,6 +18,7 @@ function initModels(sequelize) {
   var hinh_anh_san_pham = _hinh_anh_san_pham(sequelize, DataTypes);
   var khach_hang = _khach_hang(sequelize, DataTypes);
   var loai_san_pham = _loai_san_pham(sequelize, DataTypes);
+  var quan_tri_vien = _quan_tri_vien(sequelize, DataTypes);
   var san_pham = _san_pham(sequelize, DataTypes);
   var thuong_hieu = _thuong_hieu(sequelize, DataTypes);
 
@@ -51,6 +53,7 @@ function initModels(sequelize) {
     hinh_anh_san_pham,
     khach_hang,
     loai_san_pham,
+    quan_tri_vien,
     san_pham,
     thuong_hieu,
   };
