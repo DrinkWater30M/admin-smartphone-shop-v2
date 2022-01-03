@@ -60,7 +60,18 @@ const unblockAccount = async (data) => {
 }
 
 const getOneAccountById = async (id) => {
-    return models.quan_tri_vien.findOne({where: {MaAdmin: id}, raw: true});
+    return models.quan_tri_vien.findOne({ where: { MaAdmin: id }, raw: true });
+}
+
+const editInfo = async (id, data) => {
+    console.log("🚀 ~ file: accountService.js ~ line 67 ~ editInfo ~ data", data)
+    await models.quan_tri_vien.update(
+        {
+            TenNguoiSuDung: data.ten_nguoi_su_dung,
+            TenDangNhap: data.ten_dang_nhap,
+            Email: data.email
+        },
+        { where: { MaAdmin: id } });
 }
 
 module.exports = {
@@ -70,5 +81,6 @@ module.exports = {
     delAccount: delAccount,
     blockAccount: blockAccount,
     unblockAccount: unblockAccount,
-    getOneAccountById: getOneAccountById
+    getOneAccountById: getOneAccountById,
+    editInfo: editInfo
 }

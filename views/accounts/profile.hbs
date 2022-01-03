@@ -41,37 +41,47 @@
     </div>
     <div class="profile">
         <div id="page-inner">
+            <form method="post" id="form_profile">
+                <div class="row">
+                    <div class="col-md-4 col-sm-12 col-xs-12">
+                        <ul class="list">
+                            <li>Tên người sử dụng</li>
+                            <li>Tên đăng nhập</li>
+                            <li>Email</li>
+                        </ul>
+                    </div>
 
-            <div class="row">
-                <div class="col-md-4 col-sm-12 col-xs-12">
-                    <ul class="list">
-                        <li>Tên người sử dụng</li>
-                        <li>Tên đăng nhập</li>
-                        <li>Email</li>
-                    </ul>
+                    <div class="col-md-8 col-sm-12 col-xs-12">
+                        <ul class="list-info">
+                            {{#with infoAccount}}
+                            <li><input type="text" value="{{TenNguoiSuDung}}" name="ten_nguoi_su_dung"
+                                    id="ten_nguoi_su_dung"></input></li>
+                            <li><input type="text" value="{{TenDangNhap}}" name="ten_dang_nhap"
+                                    id="ten_dang_nhap"></input></li>
+                            <li><input type="email" value="{{Email}}" name="email" id="email"></input></li>
+                            {{/with}}
+                        </ul>
+                    </div>
+                    {{!-- <div class="col-md-2 col-sm-12 col-xs-12">
+                        <div class="avatar"><img src="/images/bg-img.jpg" alt=""></div>
+                        <div class="name">MAL<i class="fa fa-pencil-square-o" aria-hidden="true"></i></div> --}}
+                        {{!--
+                    </div> --}}
                 </div>
-                <div class="col-md-8 col-sm-12 col-xs-12">
-                    <ul class="list-info">
-                        {{#with infoAccount}}
-                        <li><input type="text" value="{{TenNguoiSuDung}}"></input></li>
-                        <li><input type="text" value="{{TenDangNhap}}"></input></li>
-                        <li><input type="email" value="{{Email}}"></input></li>
-                        {{/with}}
-                    </ul>
+
+                <div class="row">
+                    <div class="col-12 error_proflie">
+                        <div id="error"></div>
+                    </div>
+                    <div class="col-12 btn_update_profile">
+                        <button type="button" id="btn_update_profile">Cập nhật</button>
+                    </div>
                 </div>
-                {{!-- <div class="col-md-2 col-sm-12 col-xs-12">
-                    <div class="avatar"><img src="/images/bg-img.jpg" alt=""></div>
-                    <div class="name">MAL<i class="fa fa-pencil-square-o" aria-hidden="true"></i></div> --}}
-                    {{!--
-                </div> --}}
-            </div>
+            </form>
             <div class="row">
                 <a href="#" class="change_password">Thay đổi mật khẩu</a>
-            </div>
-            <div class="row">
-                <div class="col-12 btn_update_profile">
-                <button type="submit">Cập nhật</button></div>
             </div>
         </div>
     </div>
 </div>
+<script src="/javascripts/profile_admin.js"></script>

@@ -42,10 +42,16 @@ let handlingAccount = async (req, res) => {
     await listAccountCustomer(req, res)
 }
 
+let editInfo = async (req, res) => {
+    await accountService.editInfo(req.user.MaAdmin, req.body);
+    await info(req, res);
+}
+
 module.exports = {
     listAccountAdmin: listAccountAdmin,
     listAccountCustomer: listAccountCustomer,
     info: info,
     createAccountAdmin: createAccountAdmin,
-    handlingAccount: handlingAccount
+    handlingAccount: handlingAccount,
+    editInfo: editInfo
 };

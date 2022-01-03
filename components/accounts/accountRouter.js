@@ -13,6 +13,8 @@ router.get('/Admin/add', function(req, res, next) {
 
 router.get('/profile',accountController.info)
 
+router.post('/profile', accountController.editInfo);
+
 router.post('/Admin/add',accountController.createAccountAdmin);
 
 router.post('/', accountController.handlingAccount);
