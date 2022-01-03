@@ -15,6 +15,9 @@
         <form method="post">
             <input type="text" value="" placeholder="Username" id="username" name="username"/>
             <input type="password" value="" placeholder="Password" id="password"  name="password"/>
+            {{#if error}}
+            <div class="error_login">{{error}}</div>
+            {{/if}}
             <button type="submit">Submit</button>
         </form>
     </div>

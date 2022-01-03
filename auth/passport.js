@@ -15,15 +15,9 @@ passport.use(new LocalStrategy(
         try{
             let accountAdmin = await models.quan_tri_vien.findOne({where: {TenDangNhap: username}, raw: true});
             if (!accountAdmin || !await validPassword(password, accountAdmin.MatKhau)) {
-                return done(null, false, )
-                // req.flash('message', ['Email chưa được đăng kí! Hãy tạo tài khoản!'] ));
-            }
-            
-            // if () {
-                //     return done(null, false, req.flash('message', 'Mật khẩu không chính xác!' ));
-                // }
-                
-                console.log("🚀 ~ file: passport.js ~ line 16 ~ function ~ accountAdmin", accountAdmin)
+                return done(null, false, req.flash('message', 'Tài khoản hoặc mật khẩu không đúng!'));
+            }        
+            console.log("🚀 ~ file: passport.js ~ line 16 ~ function ~ accountAdmin", accountAdmin)
             return done(null, accountAdmin);
         }
         catch(err){
@@ -31,7 +25,6 @@ passport.use(new LocalStrategy(
         }
     }
 ));
-
 
 
 passport.serializeUser(function(user, done) {
