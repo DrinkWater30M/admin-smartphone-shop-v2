@@ -25,7 +25,7 @@ let listAccountCustomer = async (req, res) => {
     const accountList = await accountService.listCustomer();
     let accountBlocked = 0;
     accountList.forEach(value => {
-        if (value.is_block === 0)
+        if (value.is_block === 1)
             accountBlocked++;
     });
     const accountActive = accountList.length - accountBlocked;

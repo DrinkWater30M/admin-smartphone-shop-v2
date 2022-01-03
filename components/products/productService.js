@@ -167,8 +167,13 @@ let addProduct = async (data)=>{
     }
 }
 
+let getAllProduct = async () => {
+    return models.san_pham.findAll({raw: true});
+}
+
 module.exports = {
     list: list,
     createProduct: createProduct,
-    addProduct: addProduct
+    addProduct: addProduct,
+    getAllProduct: getAllProduct
 }

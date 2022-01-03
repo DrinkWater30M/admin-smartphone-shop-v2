@@ -18,7 +18,8 @@ let list = async (req, res) => {
     const itemPerPage = 9
     const products = await productService.list(pageNumber, itemPerPage, nameProduct);
     console.log('i', products);
-    res.render('products/productList', { products });
+    const totalProduct = await productService.getAllProduct();
+    res.render('products/productList', { products, totalProduct: totalProduct.length });
 }
 
 let addProduct = async (req, res) => {
