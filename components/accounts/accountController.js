@@ -36,7 +36,7 @@ let listAccountCustomer = async (req, res) => {
     else
         pageNumber = 0;
 
-    const itemPerPage = 9
+    const itemPerPage = 6
     const accountInPage = await accountService.listCustomerInPage(pageNumber, itemPerPage);
     res.render('accounts/accountList', { accountInPage, numberAccount: accountList.length, accountBlocked, accountActive, currentPage: pageNumber+1 });
 }
