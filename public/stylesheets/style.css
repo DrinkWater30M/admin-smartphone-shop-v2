@@ -66,6 +66,12 @@ ul {
   text-align: right;
 }
 
+.list-detail li {
+  padding: 16px;
+  font-size: 18px;
+ 
+}
+
 .list-info li {
   padding: 10px;
 }

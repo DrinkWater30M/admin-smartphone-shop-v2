@@ -38,16 +38,22 @@ let listAccountCustomer = async (req, res) => {
 
     const itemPerPage = 6
     const accountInPage = await accountService.listCustomerInPage(pageNumber, itemPerPage);
-    res.render('accounts/accountList', { accountInPage, numberAccount: accountList.length, accountBlocked, accountActive, currentPage: pageNumber+1 });
+    res.render('accounts/accountList', { accountInPage, numberAccount: accountList.length, accountBlocked, accountActive, currentPage: pageNumber + 1 });
 }
 
 let handlingAccount = async (req, res) => {
+    if (req.body.choose === 'detail') {
+        const detailAccount = await accountService.detailAccount(req.body);
+        console.log("🚀 ~ file: accountController.js ~ line 47 ~ handlingAccount ~ detailAccount", detailAccount)
+        return res.render('accounts/detailCustomer', { detailAccount: detailAccount[0] });
+    }
     if (req.body.choose === 'del')
         await accountService.delAccount(req.body);
     else if (req.body.choose === 'block')
         await accountService.blockAccount(req.body);
     else if (req.body.choose === 'unblock')
         await accountService.unblockAccount(req.body);
+
     await listAccountCustomer(req, res)
 }
 

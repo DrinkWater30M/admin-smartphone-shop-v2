@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
-const { models } = require('../../models');
-const { Op, INTEGER } = require("sequelize");
+const { models, sequelize } = require('../../models');
+const { Op, INTEGER, QueryTypes } = require("sequelize");
 
 
 let listAdmin = async () => {
@@ -59,6 +59,14 @@ const unblockAccount = async (data) => {
     }
 }
 
+
+const detailAccount = async (data) => {
+    let account = await sequelize.query(
+        `SELECT * FROM khach_hang  WHERE khach_hang.MaKhachHang = '${data.account_id}'`,
+        {type: QueryTypes.SELECT});
+    return account
+}
+
 const getOneAccountById = async (id) => {
     return models.quan_tri_vien.findOne({ where: { MaAdmin: id }, raw: true });
 }
@@ -83,6 +91,7 @@ const listCustomerInPage = async (page = 0, itemPerPage = 9) => {
     });
 }
 
+
 module.exports = {
     listAdmin: listAdmin,
     listCustomer: listCustomer,
@@ -92,5 +101,6 @@ module.exports = {
     unblockAccount: unblockAccount,
     getOneAccountById: getOneAccountById,
     editInfo: editInfo,
-    listCustomerInPage: listCustomerInPage
+    listCustomerInPage: listCustomerInPage,
+    detailAccount: detailAccount
 }

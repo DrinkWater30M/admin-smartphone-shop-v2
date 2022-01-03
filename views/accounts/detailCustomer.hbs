@@ -1,0 +1,71 @@
+<nav class="navbar-default navbar-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="main-menu">
+
+            <li>
+                <a href="/"><i class="fa fa-dashboard"></i> Bảng điều khiển</a>
+            </li>
+            <li>
+                <a href="/accounts"><i class="fa fa-desktop"></i> Danh sách tài
+                    khoản</a>
+            </li>
+            <li>
+                <a href="/accounts/Admin"><i class="fa fa-desktop"></i> Danh sách tài
+                    khoản quản trị</a>
+            </li>
+            <li>
+                <a href="/products"><i class="fa fa-desktop"></i> Danh sách sản phẩm</a>
+            </li>
+            <li>
+                <a href="/orders"><i class="fa fa-desktop"></i> Danh sách đơn hàng</a>
+            </li>
+            <li>
+                <a href="/information"><i class="fa fa-desktop"></i> Thông tin cửa hàng</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!-- /. NAV SIDE  -->
+<div id="page-wrapper">
+    <div class="header">
+        <h1 class="page-header">
+            Thông tin tài khoản khách hàng
+            <!-- <small>This is your UI elements section</small> -->
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#">Trang chủ</a></li>
+            <li><a href="#">Thông tin tài khoản </a></li>
+            <li class="active">Dữ liệu</li>
+        </ol>
+
+    </div>
+
+    <div id="page-inner">
+        <div class="panel panel-default">
+            <div class="row">
+                <div class="col-md-4 col-sm-12 col-xs-12">
+                    <ul class="list">
+                        <li>Họ tên</li>
+                        <li>Email</li>
+                        <li>Số điện thoại</li>
+                        <li>Địa chỉ giao hàng</li>
+                    </ul>
+                </div>
+
+                <div class="col-md-8 col-sm-12 col-xs-12">
+                    <ul class="list-detail">
+                        <li><strong>{{detailAccount.HoTen}}</strong></li>
+                        <li><strong>{{detailAccount.Email}}</strong></li>
+                        <li><strong>{{detailAccount.SoDienThoai}}</strong></li>
+                        <li><strong>{{detailAccount.DiaChiGiaoHang}}</strong></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row profile">
+                <div class="col-12 btn_update_profile">
+                    <button type="button"><a href="/accounts">Quay lại</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
