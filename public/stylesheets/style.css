@@ -265,3 +265,36 @@ ul {
   text-align: center;
   color: #d42114;
 }
+
+.page-pagination {
+  text-align: right;
+  padding-right: 15px;
+}
+
+.page-pagination li {
+  display: inline-block;
+}
+.page-pagination li a {
+  font-weight: 500;
+  padding: 0 10px;
+  display: block;
+  text-align: center;
+  line-height: 41px;
+  min-width: 41px;
+  height: 41px;
+  text-transform: uppercase;
+  color: #ababab;
+  letter-spacing: 2px;
+  border-radius: 5px;
+}
+.page-pagination li a.current {
+  background: #f6f5f9;
+  color: #266bf9;
+}
+.page-pagination li a:hover {
+  color: #266bf9;
+}
+
+.pagination-item.active {
+  color: #266bf9;
+}

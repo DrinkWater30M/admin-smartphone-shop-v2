@@ -58,7 +58,9 @@
 
             </div>
             {{!-- Begin: search-bar, plus products --}}
-
+            <form id="form-accounts">
+                <input id="page" type="hidden" name="page" value="{{currentPage}}">
+            </form>
             <div class="row">
                 <div class="col-md-6 col-sm-12 col-xs-12 search-section">
                     <input type="text" id="search-bar">
@@ -96,9 +98,19 @@
                 </div>
                 {{/each}}
             </div>
-            <div class="page-number">
-                <button class="ti-angle-left btn-page-number" id="pagination-left">Pre</button>
-                <button class="ti-angle-right btn-page-number" id="pagination-right">Next</button>
+            <div class="page-pagination">
+                <ul>
+                    <li class="li"><a id="pagination-left" class="page-link" href="#"><i
+                                class="fa fa-angle-left"></i></a>
+                    </li>
+                    <li class="li"> <a class="pagination-item" href="javascript:{}">1</a></li>
+                    <li class="li "> <a class="pagination-item" href="javascript:{}">2</a></li>
+                    <li class="li"> <a class="pagination-item" href="javascript:{}">3</a></li>
+
+                    <li class="li "><a id="pagination-right" class="page-link" href="#"><i
+                                class="fa fa-angle-right"></i></a>
+                    </li>
+                </ul>
             </div>
 
         </div>

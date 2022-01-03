@@ -29,7 +29,16 @@ let listAccountCustomer = async (req, res) => {
             accountBlocked++;
     });
     const accountActive = accountList.length - accountBlocked;
-    res.render('accounts/accountList', { accountList, numberAccount: accountList.length, accountBlocked, accountActive });
+
+    let pageNumber = 0
+    if (!isNaN(req.query.page) && req.query.page > 0)
+        pageNumber = req.query.page - 1;
+    else
+        pageNumber = 0;
+
+    const itemPerPage = 9
+    const accountInPage = await accountService.listCustomerInPage(pageNumber, itemPerPage);
+    res.render('accounts/accountList', { accountInPage, numberAccount: accountList.length, accountBlocked, accountActive, currentPage: pageNumber+1 });
 }
 
 let handlingAccount = async (req, res) => {

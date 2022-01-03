@@ -74,6 +74,15 @@ const editInfo = async (id, data) => {
         { where: { MaAdmin: id } });
 }
 
+const listCustomerInPage = async (page = 0, itemPerPage = 9) => {
+    return models.khach_hang.findAll({
+        where: {is_del: 0},
+        raw: true,
+        offset: page * itemPerPage,
+        limit: itemPerPage,
+    });
+}
+
 module.exports = {
     listAdmin: listAdmin,
     listCustomer: listCustomer,
@@ -82,5 +91,6 @@ module.exports = {
     blockAccount: blockAccount,
     unblockAccount: unblockAccount,
     getOneAccountById: getOneAccountById,
-    editInfo: editInfo
+    editInfo: editInfo,
+    listCustomerInPage: listCustomerInPage
 }

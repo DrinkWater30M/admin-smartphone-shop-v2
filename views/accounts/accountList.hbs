@@ -82,6 +82,9 @@
                 </div>
             </div>
         </div>
+        <form id="form-accounts">
+            <input id="page" type="hidden" name="page" value="{{currentPage}}" >
+        </form>
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
@@ -90,7 +93,7 @@
                     </div>
 
                     <div class="panel-body">
-                        {{#each accountList}}
+                        {{#each accountInPage}}
                         {{#if is_block}}
                         <div class="alert alert-danger">
                             <div class="DSTK">
@@ -135,8 +138,21 @@
                         {{/each}}
                     </div>
 
+                    <div class="page-pagination">
+                        <ul>
+                            <li class="li"><a id="pagination-left" class="page-link" href="#"><i
+                                        class="fa fa-angle-left"></i></a>
+                            </li>
+                            <li class="li"> <a class="pagination-item" href="javascript:{}">1</a></li>
+                            <li class="li "> <a class="pagination-item" href="javascript:{}">2</a></li>
+                            <li class="li"> <a class="pagination-item" href="javascript:{}">3</a></li>
+
+                            <li class="li "><a id="pagination-right" class="page-link" href="#"><i
+                                        class="fa fa-angle-right"></i></a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
