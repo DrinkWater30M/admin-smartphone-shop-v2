@@ -88,15 +88,20 @@
                         <div class="panel-heading">
                             Danh sách
                         </div>
-
+                        <form id="form-accounts">
+                            <input id="page" type="hidden" name="page" value="{{currentPage}}">
+                        </form>
+                        {{#if order1}}
                         <div class="panel-body">
+                            {{#ifCond order1.[0].TrangThaiGiaoHang '==' 0}}
                             <div class="alert alert-danger">
                                 <div class="order">
                                     <div>
-                                        <span class="space">Tên: <strong>anh minh </strong></span>
-                                        <span class="space">Email: <strong>anhminh0401@abc.com</strong></span>
-                                        <span class="space">SĐT: <strong>1921912912</strong> </span>
-                                        <span class="space">Địa chỉ: <strong>123 Lê Hồng Phong</strong> </span>
+                                        <span class="space">Tên: <strong>{{order1.[0].HoTen}}</strong></span>
+                                        <span class="space">Email: <strong>{{order1.[0].Email}}</strong></span>
+                                        <span class="space">SĐT: <strong>{{order1.[0].SoDienThoai}}</strong> </span>
+                                        <span class="space">Địa chỉ: <strong>{{order1.[0].DiaChiGiaoHang}}</strong>
+                                        </span>
                                         <div>
                                             <table class="table">
                                                 <tr>
@@ -106,40 +111,38 @@
                                                     <th>Số lượng</th>
                                                     <th>Giá bán</th>
                                                 </tr>
+                                                {{#each order1}}
                                                 <tr>
-                                                    <td>1</td>
-                                                    <td>Iphone 13</td>
-                                                    <td>Apple</td>
-                                                    <td>12</td>
-                                                    <td>12000000</td>
+                                                    <td>{{@index}}</td>
+                                                    <td>{{TenSanPham}}</td>
+                                                    <td>{{ThuongHieu}}</td>
+                                                    <td>{{SoLuongSanPham}}</td>
+                                                    <td>{{DonGia}}</td>
                                                 </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Samsung A12</td>
-                                                    <td>Samsung</td>
-                                                    <td>1</td>
-                                                    <td>15000000</td>
-                                                </tr>
+                                                {{/each}}
                                             </table>
                                         </div>
                                     </div>
 
                                     <div class="btnDSTK">
-                                        <span class="space">Tổng tiền: <strong>250000000</strong> </span>
+                                        <span class="space">Tổng tiền: <strong>{{order1.[0].TongTien}}</strong> </span>
                                         <span class="space">Tình trạng đơn hàng: <strong>Chưa giao</strong>
                                         </span>
-                                        <button>Cập nhật tình trạng đơn hàng</button>
+                                        <button>Cập nhật</button>
                                         <button>Hủy</button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="alert alert-success">
+                            {{/ifCond}}
+                            {{#ifCond order1.[0].TrangThaiGiaoHang '==' 1}}
+                            <div class="alert alert-warning">
                                 <div class="order">
                                     <div>
-                                        <span class="space">Tên: <strong>Văn Lợi </strong></span>
-                                        <span class="space">Email: <strong>vanloi@abc.com</strong></span>
-                                        <span class="space">SĐT: <strong>123123123</strong> </span>
-                                        <span class="space">Địa chỉ: <strong>4345 Lê Hồng Phong</strong> </span>
+                                        <span class="space">Tên: <strong>{{order1.[0].HoTen}}</strong></span>
+                                        <span class="space">Email: <strong>{{order1.[0].Email}}</strong></span>
+                                        <span class="space">SĐT: <strong>{{order1.[0].SoDienThoai}}</strong> </span>
+                                        <span class="space">Địa chỉ: <strong>{{order1.[0].DiaChiGiaoHang}}</strong>
+                                        </span>
                                         <div>
                                             <table class="table">
                                                 <tr>
@@ -149,31 +152,455 @@
                                                     <th>Số lượng</th>
                                                     <th>Giá bán</th>
                                                 </tr>
+                                                {{#each order1}}
                                                 <tr>
-                                                    <td>1</td>
-                                                    <td>Iphone 13</td>
-                                                    <td>Apple</td>
-                                                    <td>12</td>
-                                                    <td>12000000</td>
+                                                     <td>{{@index}}</td>
+                                                    <td>{{TenSanPham}}</td>
+                                                    <td>{{ThuongHieu}}</td>
+                                                    <td>{{SoLuongSanPham}}</td>
+                                                    <td>{{DonGia}}</td>
                                                 </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Samsung A12</td>
-                                                    <td>Samsung</td>
-                                                    <td>1</td>
-                                                    <td>15000000</td>
-                                                </tr>
+                                                {{/each}}
                                             </table>
                                         </div>
                                     </div>
 
                                     <div class="btnDSTK">
-                                        <span class="space">Tổng tiền: <strong>250000000</strong> </span>
+                                        <span class="space">Tổng tiền: <strong>{{order1.[0].TongTien}}</strong> </span>
+                                        <span class="space">Tình trạng đơn hàng: <strong>Đang giao</strong>
+                                        </span>
+                                        <button>Cập nhật</button>
+                                        <button>Hủy</button>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/ifCond}}
+                            {{#ifCond order1.[0].TrangThaiGiaoHang '==' 2}}
+                            <div class="alert alert-success">
+                                <div class="order">
+                                    <div>
+                                        <span class="space">Tên: <strong>{{order1.[0].HoTen}}</strong></span>
+                                        <span class="space">Email: <strong>{{order1.[0].Email}}</strong></span>
+                                        <span class="space">SĐT: <strong>{{order1.[0].SoDienThoai}}</strong> </span>
+                                        <span class="space">Địa chỉ: <strong>{{order1.[0].DiaChiGiaoHang}}</strong>
+                                        </span>
+                                        <div>
+                                            <table class="table">
+                                                <tr>
+                                                    <th>STT</th>
+                                                    <th>Tên sản phẩm</th>
+                                                    <th>Hãng</th>
+                                                    <th>Số lượng</th>
+                                                    <th>Giá bán</th>
+                                                </tr>
+                                                {{#each order1}}
+                                                <tr>
+                                                    <td>{{@index}}</td>
+                                                    <td>{{TenSanPham}}</td>
+                                                    <td>{{ThuongHieu}}</td>
+                                                    <td>{{SoLuongSanPham}}</td>
+                                                    <td>{{DonGia}}</td>
+                                                </tr>
+                                                {{/each}}
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="btnDSTK">
+                                        <span class="space">Tổng tiền: <strong>{{order1.[0].TongTien}}</strong> </span>
                                         <span class="space">Tình trạng đơn hàng: <strong>Đã hoàn thành </strong></span>
                                     </div>
                                 </div>
                             </div>
+                            {{/ifCond}}
                         </div>
+                        {{/if}}
+                        {{#if order2}}
+                        <div class="panel-body">
+                            {{#ifCond order2.[0].TrangThaiGiaoHang '==' 0}}
+                            <div class="alert alert-danger">
+                                <div class="order">
+                                    <div>
+                                        <span class="space">Tên: <strong>{{order2.[0].HoTen}}</strong></span>
+                                        <span class="space">Email: <strong>{{order2.[0].Email}}</strong></span>
+                                        <span class="space">SĐT: <strong>{{order2.[0].SoDienThoai}}</strong> </span>
+                                        <span class="space">Địa chỉ: <strong>{{order2.[0].DiaChiGiaoHang}}</strong>
+                                        </span>
+                                        <div>
+                                            <table class="table">
+                                                <tr>
+                                                    <th>STT</th>
+                                                    <th>Tên sản phẩm</th>
+                                                    <th>Hãng</th>
+                                                    <th>Số lượng</th>
+                                                    <th>Giá bán</th>
+                                                </tr>
+                                                {{#each order2}}
+                                                <tr>
+                                                    <td>{{@index}}</td>
+                                                    <td>{{TenSanPham}}</td>
+                                                    <td>{{ThuongHieu}}</td>
+                                                    <td>{{SoLuongSanPham}}</td>
+                                                    <td>{{DonGia}}</td>
+                                                </tr>
+                                                {{/each}}
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="btnDSTK">
+                                        <span class="space">Tổng tiền: <strong>{{order2.[0].TongTien}}</strong> </span>
+                                        <span class="space">Tình trạng đơn hàng: <strong>Chưa giao</strong>
+                                        </span>
+                                        <button>Cập nhật</button>
+                                        <button>Hủy</button>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/ifCond}}
+                            {{#ifCond order2.[0].TrangThaiGiaoHang '==' 1}}
+                            <div class="alert alert-warning">
+                                <div class="order">
+                                    <div>
+                                        <span class="space">Tên: <strong>{{order2.[0].HoTen}}</strong></span>
+                                        <span class="space">Email: <strong>{{order2.[0].Email}}</strong></span>
+                                        <span class="space">SĐT: <strong>{{order2.[0].SoDienThoai}}</strong> </span>
+                                        <span class="space">Địa chỉ: <strong>{{order2.[0].DiaChiGiaoHang}}</strong>
+                                        </span>
+                                        <div>
+                                            <table class="table">
+                                                <tr>
+                                                    <th>STT</th>
+                                                    <th>Tên sản phẩm</th>
+                                                    <th>Hãng</th>
+                                                    <th>Số lượng</th>
+                                                    <th>Giá bán</th>
+                                                </tr>
+                                                {{#each order2}}
+                                                <tr>
+                                                     <td>{{@index}}</td>
+                                                    <td>{{TenSanPham}}</td>
+                                                    <td>{{ThuongHieu}}</td>
+                                                    <td>{{SoLuongSanPham}}</td>
+                                                    <td>{{DonGia}}</td>
+                                                </tr>
+                                                {{/each}}
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="btnDSTK">
+                                        <span class="space">Tổng tiền: <strong>{{order2.[0].TongTien}}</strong> </span>
+                                        <span class="space">Tình trạng đơn hàng: <strong>Đang giao</strong>
+                                        </span>
+                                        <button>Cập nhật</button>
+                                        <button>Hủy</button>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/ifCond}}
+                            {{#ifCond order2.[0].TrangThaiGiaoHang '==' 2}}
+                            <div class="alert alert-success">
+                                <div class="order">
+                                    <div>
+                                        <span class="space">Tên: <strong>{{order2.[0].HoTen}}</strong></span>
+                                        <span class="space">Email: <strong>{{order2.[0].Email}}</strong></span>
+                                        <span class="space">SĐT: <strong>{{order2.[0].SoDienThoai}}</strong> </span>
+                                        <span class="space">Địa chỉ: <strong>{{order2.[0].DiaChiGiaoHang}}</strong>
+                                        </span>
+                                        <div>
+                                            <table class="table">
+                                                <tr>
+                                                    <th>STT</th>
+                                                    <th>Tên sản phẩm</th>
+                                                    <th>Hãng</th>
+                                                    <th>Số lượng</th>
+                                                    <th>Giá bán</th>
+                                                </tr>
+                                                {{#each order2}}
+                                                <tr>
+                                                    <td>{{@index}}</td>
+                                                    <td>{{TenSanPham}}</td>
+                                                    <td>{{ThuongHieu}}</td>
+                                                    <td>{{SoLuongSanPham}}</td>
+                                                    <td>{{DonGia}}</td>
+                                                </tr>
+                                                {{/each}}
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="btnDSTK">
+                                        <span class="space">Tổng tiền: <strong>{{order2.[0].TongTien}}</strong> </span>
+                                        <span class="space">Tình trạng đơn hàng: <strong>Đã hoàn thành </strong></span>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/ifCond}}
+                        </div>
+                        {{/if}}
+                        {{#if order3}}
+                        <div class="panel-body">
+                            {{#ifCond order3.[0].TrangThaiGiaoHang '==' 0}}
+                            <div class="alert alert-danger">
+                                <div class="order">
+                                    <div>
+                                        <span class="space">Tên: <strong>{{order3.[0].HoTen}}</strong></span>
+                                        <span class="space">Email: <strong>{{order3.[0].Email}}</strong></span>
+                                        <span class="space">SĐT: <strong>{{order3.[0].SoDienThoai}}</strong> </span>
+                                        <span class="space">Địa chỉ: <strong>{{order3.[0].DiaChiGiaoHang}}</strong>
+                                        </span>
+                                        <div>
+                                            <table class="table">
+                                                <tr>
+                                                    <th>STT</th>
+                                                    <th>Tên sản phẩm</th>
+                                                    <th>Hãng</th>
+                                                    <th>Số lượng</th>
+                                                    <th>Giá bán</th>
+                                                </tr>
+                                                {{#each order3}}
+                                                <tr>
+                                                    <td>{{@index}}</td>
+                                                    <td>{{TenSanPham}}</td>
+                                                    <td>{{ThuongHieu}}</td>
+                                                    <td>{{SoLuongSanPham}}</td>
+                                                    <td>{{DonGia}}</td>
+                                                </tr>
+                                                {{/each}}
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="btnDSTK">
+                                        <span class="space">Tổng tiền: <strong>{{order3.[0].TongTien}}</strong> </span>
+                                        <span class="space">Tình trạng đơn hàng: <strong>Chưa giao</strong>
+                                        </span>
+                                        <button>Cập nhật</button>
+                                        <button>Hủy</button>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/ifCond}}
+                            {{#ifCond order3.[0].TrangThaiGiaoHang '==' 1}}
+                            <div class="alert alert-warning">
+                                <div class="order">
+                                    <div>
+                                        <span class="space">Tên: <strong>{{order3.[0].HoTen}}</strong></span>
+                                        <span class="space">Email: <strong>{{order3.[0].Email}}</strong></span>
+                                        <span class="space">SĐT: <strong>{{order3.[0].SoDienThoai}}</strong> </span>
+                                        <span class="space">Địa chỉ: <strong>{{order3.[0].DiaChiGiaoHang}}</strong>
+                                        </span>
+                                        <div>
+                                            <table class="table">
+                                                <tr>
+                                                    <th>STT</th>
+                                                    <th>Tên sản phẩm</th>
+                                                    <th>Hãng</th>
+                                                    <th>Số lượng</th>
+                                                    <th>Giá bán</th>
+                                                </tr>
+                                                {{#each order3}}
+                                                <tr>
+                                                     <td>{{@index}}</td>
+                                                    <td>{{TenSanPham}}</td>
+                                                    <td>{{ThuongHieu}}</td>
+                                                    <td>{{SoLuongSanPham}}</td>
+                                                    <td>{{DonGia}}</td>
+                                                </tr>
+                                                {{/each}}
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="btnDSTK">
+                                        <span class="space">Tổng tiền: <strong>{{order3.[0].TongTien}}</strong> </span>
+                                        <span class="space">Tình trạng đơn hàng: <strong>Đang giao</strong>
+                                        </span>
+                                        <button>Cập nhật</button>
+                                        <button>Hủy</button>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/ifCond}}
+                            {{#ifCond order3.[0].TrangThaiGiaoHang '==' 2}}
+                            <div class="alert alert-success">
+                                <div class="order">
+                                    <div>
+                                        <span class="space">Tên: <strong>{{order3.[0].HoTen}}</strong></span>
+                                        <span class="space">Email: <strong>{{order3.[0].Email}}</strong></span>
+                                        <span class="space">SĐT: <strong>{{order3.[0].SoDienThoai}}</strong> </span>
+                                        <span class="space">Địa chỉ: <strong>{{order3.[0].DiaChiGiaoHang}}</strong>
+                                        </span>
+                                        <div>
+                                            <table class="table">
+                                                <tr>
+                                                    <th>STT</th>
+                                                    <th>Tên sản phẩm</th>
+                                                    <th>Hãng</th>
+                                                    <th>Số lượng</th>
+                                                    <th>Giá bán</th>
+                                                </tr>
+                                                {{#each order3}}
+                                                <tr>
+                                                    <td>{{@index}}</td>
+                                                    <td>{{TenSanPham}}</td>
+                                                    <td>{{ThuongHieu}}</td>
+                                                    <td>{{SoLuongSanPham}}</td>
+                                                    <td>{{DonGia}}</td>
+                                                </tr>
+                                                {{/each}}
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="btnDSTK">
+                                        <span class="space">Tổng tiền: <strong>{{order3.[0].TongTien}}</strong> </span>
+                                        <span class="space">Tình trạng đơn hàng: <strong>Đã hoàn thành </strong></span>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/ifCond}}
+                        </div>
+                        {{/if}}
+                        {{#if order4}}
+                        <div class="panel-body">
+                            {{#ifCond order4.[0].TrangThaiGiaoHang '==' 0}}
+                            <div class="alert alert-danger">
+                                <div class="order">
+                                    <div>
+                                        <span class="space">Tên: <strong>{{order4.[0].HoTen}}</strong></span>
+                                        <span class="space">Email: <strong>{{order4.[0].Email}}</strong></span>
+                                        <span class="space">SĐT: <strong>{{order4.[0].SoDienThoai}}</strong> </span>
+                                        <span class="space">Địa chỉ: <strong>{{order4.[0].DiaChiGiaoHang}}</strong>
+                                        </span>
+                                        <div>
+                                            <table class="table">
+                                                <tr>
+                                                    <th>STT</th>
+                                                    <th>Tên sản phẩm</th>
+                                                    <th>Hãng</th>
+                                                    <th>Số lượng</th>
+                                                    <th>Giá bán</th>
+                                                </tr>
+                                                {{#each order4}}
+                                                <tr>
+                                                    <td>{{@index}}</td>
+                                                    <td>{{TenSanPham}}</td>
+                                                    <td>{{ThuongHieu}}</td>
+                                                    <td>{{SoLuongSanPham}}</td>
+                                                    <td>{{DonGia}}</td>
+                                                </tr>
+                                                {{/each}}
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="btnDSTK">
+                                        <span class="space">Tổng tiền: <strong>{{order4.[0].TongTien}}</strong> </span>
+                                        <span class="space">Tình trạng đơn hàng: <strong>Chưa giao</strong>
+                                        </span>
+                                        <button>Cập nhật</button>
+                                        <button>Hủy</button>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/ifCond}}
+                            {{#ifCond order4.[0].TrangThaiGiaoHang '==' 1}}
+                            <div class="alert alert-warning">
+                                <div class="order">
+                                    <div>
+                                        <span class="space">Tên: <strong>{{order4.[0].HoTen}}</strong></span>
+                                        <span class="space">Email: <strong>{{order4.[0].Email}}</strong></span>
+                                        <span class="space">SĐT: <strong>{{order4.[0].SoDienThoai}}</strong> </span>
+                                        <span class="space">Địa chỉ: <strong>{{order4.[0].DiaChiGiaoHang}}</strong>
+                                        </span>
+                                        <div>
+                                            <table class="table">
+                                                <tr>
+                                                    <th>STT</th>
+                                                    <th>Tên sản phẩm</th>
+                                                    <th>Hãng</th>
+                                                    <th>Số lượng</th>
+                                                    <th>Giá bán</th>
+                                                </tr>
+                                                {{#each order4}}
+                                                <tr>
+                                                    <td>{{@index}}</td>
+                                                    <td>{{TenSanPham}}</td>
+                                                    <td>{{ThuongHieu}}</td>
+                                                    <td>{{SoLuongSanPham}}</td>
+                                                    <td>{{DonGia}}</td>
+                                                </tr>
+                                                {{/each}}
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="btnDSTK">
+                                        <span class="space">Tổng tiền: <strong>{{order4.[0].TongTien}}</strong> </span>
+                                        <span class="space">Tình trạng đơn hàng: <strong>Đang giao</strong>
+                                        </span>
+                                        <button>Cập nhật</button>
+                                        <button>Hủy</button>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/ifCond}}
+                            {{#ifCond order4.[0].TrangThaiGiaoHang '==' 2}}
+                            <div class="alert alert-success">
+                                <div class="order">
+                                    <div>
+                                        <span class="space">Tên: <strong>{{order4.[0].HoTen}}</strong></span>
+                                        <span class="space">Email: <strong>{{order4.[0].Email}}</strong></span>
+                                        <span class="space">SĐT: <strong>{{order4.[0].SoDienThoai}}</strong> </span>
+                                        <span class="space">Địa chỉ: <strong>{{order4.[0].DiaChiGiaoHang}}</strong>
+                                        </span>
+                                        <div>
+                                            <table class="table">
+                                                <tr>
+                                                    <th>STT</th>
+                                                    <th>Tên sản phẩm</th>
+                                                    <th>Hãng</th>
+                                                    <th>Số lượng</th>
+                                                    <th>Giá bán</th>
+                                                </tr>
+                                                {{#each order4}}
+                                                <tr>
+                                                    <td>{{@index}}</td>
+                                                    <td>{{TenSanPham}}</td>
+                                                    <td>{{ThuongHieu}}</td>
+                                                    <td>{{SoLuongSanPham}}</td>
+                                                    <td>{{DonGia}}</td>
+                                                </tr>
+                                                {{/each}}
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="btnDSTK">
+                                        <span class="space">Tổng tiền: <strong>{{order4.[0].TongTien}}</strong> </span>
+                                        <span class="space">Tình trạng đơn hàng: <strong>Đã hoàn thành </strong></span>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/ifCond}}
+                        </div>
+                        {{/if}}
+                    </div>
+                    <div class="page-pagination">
+                        <ul>
+                            <li class="li"><a id="pagination-left" class="page-link" href="#"><i
+                                        class="fa fa-angle-left"></i></a>
+                            </li>
+                            <li class="li"> <a class="pagination-item" href="javascript:{}">1</a></li>
+                            <li class="li "> <a class="pagination-item" href="javascript:{}">2</a></li>
+                            <li class="li"> <a class="pagination-item" href="javascript:{}">3</a></li>
+
+                            <li class="li "><a id="pagination-right" class="page-link" href="#"><i
+                                        class="fa fa-angle-right"></i></a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>

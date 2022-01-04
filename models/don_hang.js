@@ -17,6 +17,7 @@ module.exports = function(sequelize, DataTypes) {
     MaSanPham: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      primaryKey: true,
       references: {
         model: 'loai_san_pham',
         key: 'MaSanPham'
@@ -25,12 +26,13 @@ module.exports = function(sequelize, DataTypes) {
     LoaiSanPham: {
       type: DataTypes.CHAR(25),
       allowNull: false,
+      primaryKey: true,
       references: {
         model: 'loai_san_pham',
         key: 'LoaiSanPham'
       }
     },
-    DonGia: {
+    TongTien: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
@@ -51,8 +53,9 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     TrangThaiGiaoHang: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false
+      type: DataTypes.TINYINT,
+      allowNull: false,
+      defaultValue: 0
     }
   }, {
     sequelize,
@@ -65,6 +68,8 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "MaDonHang" },
+          { name: "MaSanPham" },
+          { name: "LoaiSanPham" },
         ]
       },
       {

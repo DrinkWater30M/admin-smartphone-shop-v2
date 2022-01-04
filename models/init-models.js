@@ -22,6 +22,8 @@ function initModels(sequelize) {
   var san_pham = _san_pham(sequelize, DataTypes);
   var thuong_hieu = _thuong_hieu(sequelize, DataTypes);
 
+  loai_san_pham.belongsToMany(loai_san_pham, { as: 'LoaiSanPham_loai_san_phams', through: don_hang, foreignKey: "MaSanPham", otherKey: "LoaiSanPham" });
+  loai_san_pham.belongsToMany(loai_san_pham, { as: 'MaSanPham_loai_san_phams', through: don_hang, foreignKey: "LoaiSanPham", otherKey: "MaSanPham" });
   binh_luan.belongsTo(khach_hang, { as: "MaKhachHang_khach_hang", foreignKey: "MaKhachHang"});
   khach_hang.hasMany(binh_luan, { as: "binh_luans", foreignKey: "MaKhachHang"});
   don_hang.belongsTo(khach_hang, { as: "MaKhachHang_khach_hang", foreignKey: "MaKhachHang"});
