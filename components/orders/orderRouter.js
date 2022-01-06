@@ -5,4 +5,6 @@ const orderController = require('./orderController');
 /* GET home page. */
 router.get('/', orderController.getOrderList);
 
+router.post('/', orderController.handlingOrder);
+
 module.exports = router;

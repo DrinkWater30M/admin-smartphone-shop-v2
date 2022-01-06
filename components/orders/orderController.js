@@ -18,14 +18,18 @@ const getOrderList = async (req, res) => {
         let count = 1;
         let order = [];
         order[0] = orderList[i];
-        for (let j = i + 1; j < orderList.length; j++) {
+        let j = i+1;
+        while (j < orderList.length) {
             if (orderList[i].MaKhachHang == orderList[j].MaKhachHang && orderList[i].MaDonHang == orderList[j].MaDonHang) {
                 order[count] = orderList[j];
                 count++;
                 orderList.splice(j, 1)
             }
+            else
+                j++;
         }
         orders[d] = order;
+        console.log("🚀 ~ file: orderController.js ~ line 29 ~ getOrderList ~ order", order)
         d++;
     }
     console.log(orders)
@@ -34,6 +38,15 @@ const getOrderList = async (req, res) => {
 
 }
 
+const handlingOrder = async (req, res) => {
+    if (req.body.choose === 'update')
+        await orderService.updateOrder(req.body.order_id, req.body.account_id);
+    else if (req.body.choose === 'del') 
+        await orderService.delOrder(req.body.order_id, req.body.account_id);
+    await getOrderList(req, res);
+}
+
 module.exports = {
-    getOrderList: getOrderList
+    getOrderList: getOrderList,
+    handlingOrder: handlingOrder
 }

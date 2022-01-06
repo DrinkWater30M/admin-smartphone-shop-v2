@@ -128,8 +128,12 @@
                                         <span class="space">Tổng tiền: <strong>{{order1.[0].TongTien}}</strong> </span>
                                         <span class="space">Tình trạng đơn hàng: <strong>Chưa giao</strong>
                                         </span>
-                                        <button>Cập nhật</button>
-                                        <button>Hủy</button>
+                                        <form method="post" class="form-order">
+                                            <button name="choose" value="update">Cập nhật</button>
+                                            <button name="choose" value="del">Hủy</button>
+                                            <input name="order_id" type="hidden" value={{order1.[0].MaDonHang}}>
+                                            <input name="account_id" type="hidden" value={{order1.[0].MaKhachHang}}>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -154,7 +158,7 @@
                                                 </tr>
                                                 {{#each order1}}
                                                 <tr>
-                                                     <td>{{@index}}</td>
+                                                    <td>{{@index}}</td>
                                                     <td>{{TenSanPham}}</td>
                                                     <td>{{ThuongHieu}}</td>
                                                     <td>{{SoLuongSanPham}}</td>
@@ -169,8 +173,12 @@
                                         <span class="space">Tổng tiền: <strong>{{order1.[0].TongTien}}</strong> </span>
                                         <span class="space">Tình trạng đơn hàng: <strong>Đang giao</strong>
                                         </span>
-                                        <button>Cập nhật</button>
-                                        <button>Hủy</button>
+                                        <form method="post" class="form-order">
+                                            <button name="choose" value="update">Cập nhật</button>
+                                            <button name="choose" value="del">Hủy</button>
+                                            <input name="order_id" type="hidden" value={{order1.[0].MaDonHang}}>
+                                            <input name="account_id" type="hidden" value={{order1.[0].MaKhachHang}}>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -252,8 +260,12 @@
                                         <span class="space">Tổng tiền: <strong>{{order2.[0].TongTien}}</strong> </span>
                                         <span class="space">Tình trạng đơn hàng: <strong>Chưa giao</strong>
                                         </span>
-                                        <button>Cập nhật</button>
-                                        <button>Hủy</button>
+                                        <form method="post" class="form-order">
+                                            <button name="choose" value="update">Cập nhật</button>
+                                            <button name="choose" value="del">Hủy</button>
+                                            <input name="order_id" type="hidden" value={{order2.[0].MaDonHang}}>
+                                            <input name="account_id" type="hidden" value={{order2.[0].MaKhachHang}}>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -278,7 +290,7 @@
                                                 </tr>
                                                 {{#each order2}}
                                                 <tr>
-                                                     <td>{{@index}}</td>
+                                                    <td>{{@index}}</td>
                                                     <td>{{TenSanPham}}</td>
                                                     <td>{{ThuongHieu}}</td>
                                                     <td>{{SoLuongSanPham}}</td>
@@ -293,8 +305,12 @@
                                         <span class="space">Tổng tiền: <strong>{{order2.[0].TongTien}}</strong> </span>
                                         <span class="space">Tình trạng đơn hàng: <strong>Đang giao</strong>
                                         </span>
-                                        <button>Cập nhật</button>
-                                        <button>Hủy</button>
+                                        <form method="post" class="form-order">
+                                            <button name="choose" value="update">Cập nhật</button>
+                                            <button name="choose" value="del">Hủy</button>
+                                            <input name="order_id" type="hidden" value={{order2.[0].MaDonHang}}>
+                                            <input name="account_id" type="hidden" value={{order2.[0].MaKhachHang}}>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -376,8 +392,12 @@
                                         <span class="space">Tổng tiền: <strong>{{order3.[0].TongTien}}</strong> </span>
                                         <span class="space">Tình trạng đơn hàng: <strong>Chưa giao</strong>
                                         </span>
-                                        <button>Cập nhật</button>
-                                        <button>Hủy</button>
+                                        <form method="post" class="form-order">
+                                            <button name="choose" value="update">Cập nhật</button>
+                                            <button name="choose" value="del">Hủy</button>
+                                            <input name="order_id" type="hidden" value={{order3.[0].MaDonHang}}>
+                                            <input name="account_id" type="hidden" value={{order3.[0].MaKhachHang}}>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -402,7 +422,7 @@
                                                 </tr>
                                                 {{#each order3}}
                                                 <tr>
-                                                     <td>{{@index}}</td>
+                                                    <td>{{@index}}</td>
                                                     <td>{{TenSanPham}}</td>
                                                     <td>{{ThuongHieu}}</td>
                                                     <td>{{SoLuongSanPham}}</td>
@@ -417,8 +437,12 @@
                                         <span class="space">Tổng tiền: <strong>{{order3.[0].TongTien}}</strong> </span>
                                         <span class="space">Tình trạng đơn hàng: <strong>Đang giao</strong>
                                         </span>
-                                        <button>Cập nhật</button>
-                                        <button>Hủy</button>
+                                        <form method="post" class="form-order">
+                                            <button name="choose" value="update">Cập nhật</button>
+                                            <button name="choose" value="del">Hủy</button>
+                                            <input name="order_id" type="hidden" value={{order3.[0].MaDonHang}}>
+                                            <input name="account_id" type="hidden" value={{order3.[0].MaKhachHang}}>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -500,8 +524,12 @@
                                         <span class="space">Tổng tiền: <strong>{{order4.[0].TongTien}}</strong> </span>
                                         <span class="space">Tình trạng đơn hàng: <strong>Chưa giao</strong>
                                         </span>
-                                        <button>Cập nhật</button>
-                                        <button>Hủy</button>
+                                        <form method="post" class="form-order">
+                                            <button name="choose" value="update">Cập nhật</button>
+                                            <button name="choose" value="del">Hủy</button>
+                                            <input name="order_id" type="hidden" value={{order4.[0].MaDonHang}}>
+                                            <input name="account_id" type="hidden" value={{order4.[0].MaKhachHang}}>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -541,8 +569,12 @@
                                         <span class="space">Tổng tiền: <strong>{{order4.[0].TongTien}}</strong> </span>
                                         <span class="space">Tình trạng đơn hàng: <strong>Đang giao</strong>
                                         </span>
-                                        <button>Cập nhật</button>
-                                        <button>Hủy</button>
+                                        <form method="post" class="form-order">
+                                            <button name="choose" value="update">Cập nhật</button>
+                                            <button name="choose" value="del">Hủy</button>
+                                            <input name="order_id" type="hidden" value={{order4.[0].MaDonHang}}>
+                                            <input name="account_id" type="hidden" value={{order4.[0].MaKhachHang}}>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

@@ -304,3 +304,7 @@ ul {
 .pagination-item.active {
   color: #266bf9;
 }
+
+.btnDSTK .form-order {
+  display: inline;
+}
