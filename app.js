@@ -7,8 +7,7 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const hbs = require('hbs');
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const indexRouter = require('./components/dashboard/indexRouter');
 
 const authRouter = require('./components/auth/authRouter');
 const accountsRouter = require('./components/accounts/accountRouter');
@@ -73,7 +72,6 @@ app.use(flash());
 app.use('/login',  authRouter);
 
 app.use('/', authenAccount.isLoggedIn, indexRouter);
-app.use('/users', authenAccount.isLoggedIn, usersRouter);
 app.use('/accounts', authenAccount.isLoggedIn, accountsRouter);
 app.use('/products', authenAccount.isLoggedIn, productsRouter);
 app.use('/orders', authenAccount.isLoggedIn, ordersRouter);

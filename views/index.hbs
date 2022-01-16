@@ -120,6 +120,43 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-sm-6 col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="card-title">
+                            <div class="title">Danh sách top 10 sản phẩm bán chạy nhất trong
+                                <form id="check-time-top-products" style="display: inline-block;">
+                                    <select id="time" onchange="checkTime(this)" name="time_choose">
+                                        {{#ifCond choose '==' "month"}}
+                                        <option value="month">Tháng</option>
+                                        <option value="year"> Năm </option>
+                                        {{else}}
+                                        <option value="year"> Năm </option>
+                                        <option value="month">Tháng</option>
+                                        {{/ifCond}}
+                                    </select>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-2"><strong>STT</strong></div>
+                            <div class="col-sm-6"><strong>Tên sản phẩm</strong></div>
+                            <div class="col-sm-4"><strong>Số lượng</strong></div>
+                        </div>
+                        {{#each productsTop}}
+                        <div class="row">
+                            <div class="col-sm-2" style="margin: 3px 0;"><span>{{index}}</span></div>
+                            <div class="col-sm-6" style="margin: 3px 0;"><span>{{TenSanPham}}</span></div>
+                            <div class="col-sm-4" style="margin: 3px 0;"><span>{{number}}</span></div>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+<script src="/javascripts/dashboard.js"></script>
