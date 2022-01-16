@@ -107,15 +107,15 @@ let createProduct = async (data) => {
     })
 }
 
-let addProduct = async (data)=>{
-    try{
+let addProduct = async (data) => {
+    try {
         //Generate idBrand
         let idBrand = data.brand.substring(0, 3);
         let brand = await sequelize.query(
             `SELECT * FROM thuong_hieu WHERE thuong_hieu.MaThuongHieu = '${idBrand}'`,
-            {type: QueryTypes.SELECT}
+            { type: QueryTypes.SELECT }
         );
-        if(brand.length == 0){
+        if (brand.length == 0) {
             await sequelize.query(
                 `INSERT INTO thuong_hieu(MaThuongHieu, ThuongHieu) VALUE('${idBrand}', '${data.brand}');`)
         }
@@ -125,15 +125,15 @@ let addProduct = async (data)=>{
             `INSERT INTO san_pham(TenSanPham, MaThuongHieu, MoTa)
             VALUE('${data.productName}', '${idBrand}', '${data.description}');`
         )
-        
+
         //Get id product after add
         let newProduct = (await sequelize.query(
             `SELECT san_pham.MaSanPham FROM san_pham  WHERE san_pham.TenSanPham = '${data.productName}'`,
-            {type: QueryTypes.SELECT}
+            { type: QueryTypes.SELECT }
         ))
         let idProduct = newProduct[0].MaSanPham;
         //Insert images
-        for(let i = 0; i < data.urlImages.length; i++){
+        for (let i = 0; i < data.urlImages.length; i++) {
             await sequelize.query(
                 `INSERT INTO hinh_anh_san_pham(MaSanPham, HinhAnh)
                 VALUE (${idProduct}, '${data.urlImages[i].url}');`
@@ -141,43 +141,49 @@ let addProduct = async (data)=>{
         }
 
         //Insert category
-        if(!Array.isArray(data.price)){
+        if (!Array.isArray(data.price)) {
             let idCategory = (new Date()).toISOString();
-                await sequelize.query(
-                    `INSERT INTO loai_san_pham(MaSanPham, LoaiSanPham, DonGia, SoLuong, Ram, Rom, 
+            await sequelize.query(
+                `INSERT INTO loai_san_pham(MaSanPham, LoaiSanPham, TenLoaiSanPham, DonGia, SoLuong, Ram, Rom, 
                         ManHinh, DoPhanGiai, ChipXuLi, Pin, MauSac)
-                    VALUE(${idProduct}, '${idCategory}', ${data.price}, ${data.amount}, ${data.ram}, ${data.rom},
+                    VALUE(${idProduct},  '${idCategory}', '${data.type}', ${data.price}, ${data.amount}, ${data.ram}, ${data.rom},
                         '${data.screen}', '${data.resolution}', '${data.cpu}', ${data.battery}, '${data.color}');`
-                )
+            )
         }
-        else{
-            for(let i = 0; i < data.price.length; i++){
+        else {
+            for (let i = 0; i < data.price.length; i++) {
                 let idCategory = (new Date()).toISOString();
                 await sequelize.query(
-                    `INSERT INTO loai_san_pham(MaSanPham, LoaiSanPham, DonGia, SoLuong, Ram, Rom, 
+                    `INSERT INTO loai_san_pham(MaSanPham, LoaiSanPham, TenLoaiSanPham, DonGia, SoLuong, Ram, Rom, 
                         ManHinh, DoPhanGiai, ChipXuLi, Pin, MauSac)
-                    VALUE(${idProduct}, '${idCategory}', ${data.price[i]}, ${data.amount[i]}, ${data.ram[i]}, ${data.rom[i]},
+                    VALUE(${idProduct}, '${idCategory}', '${data.type}', ${data.price[i]}, ${data.amount[i]}, ${data.ram[i]}, ${data.rom[i]},
                         '${data.screen[i]}', '${data.resolution[i]}', '${data.cpu[i]}', ${data.battery[i]}, '${data.color[i]}');`
                 )
             }
         }
     }
-    catch(error){
+    catch (error) {
         console.log(error);
     }
 }
 
 let getAllProduct = async () => {
-    return models.san_pham.findAll({raw: true});
+    return models.san_pham.findAll({ raw: true });
 }
 
 let detailProduct = async (MaSanPham) => {
     let product = await sequelize.query(
         `SELECT * FROM san_pham, thuong_hieu, loai_san_pham WHERE san_pham.MaSanPham = '${MaSanPham}' and thuong_hieu.MaThuongHieu = san_pham.MaThuongHieu
          and loai_san_pham.MaSanPham = '${MaSanPham}'`,
-        {type: QueryTypes.SELECT}
+        { type: QueryTypes.SELECT }
     );
     return product;
+}
+let getImagesProduct = async (MaSanPham) => {
+    const images = await sequelize.query(
+        `SELECT * FROM hinh_anh_san_pham WHERE hinh_anh_san_pham.MaSanPham = '${MaSanPham}'`, { type: QueryTypes.SELECT }
+    );
+    return images;
 }
 
 module.exports = {
@@ -185,5 +191,6 @@ module.exports = {
     createProduct: createProduct,
     addProduct: addProduct,
     getAllProduct: getAllProduct,
-    detailProduct: detailProduct
+    detailProduct: detailProduct,
+    getImagesProduct: getImagesProduct
 }

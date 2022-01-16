@@ -23,21 +23,23 @@ let list = async (req, res) => {
 }
 
 let addProduct = async (req, res) => {
-    console.log('b', req.body)
+    console.log('baaaaaaaaaaaaaaaaaaa', req.body)
     await productService.addProduct(req.body);
     return res.send('post crud');
 }
 
 let detailProduct = async (req, res) => {
+    
     const infoProduct = await productService.detailProduct(req.params.MaSanPham);
+    const images = await productService.getImagesProduct(req.params.MaSanPham);
     let i = 1;
     infoProduct.forEach(element => {
         element.index = i;
         i++;
     });
-    console.log("🚀 ~ file: productController.js ~ line 38 ~ detailProduct ~ infoProduct", infoProduct)
+    console.log("🚀 ~ file: productController.js ~ line 38 ~ detailProduct ~ infoProduct", images)
 
-    res.render('products/productDetail', { infoProduct })
+    res.render('products/productDetail', { infoProduct, images })
     // productService.editProduct(req.data)
     // await list(req, res);
 }

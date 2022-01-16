@@ -116,9 +116,17 @@
                         <input class="d-none" type="file" name="Image" id="image" accept=".png, .jpeg, .jpg"
                             multiple="">
                     </form>
+
                     <div class="image-main justify-content-center position-relative" id="container-image">
+                        {{#each images}}
+                        <div class="image-preview">
+                            <img src="{{HinhAnh}}" alt="hinh anh">
+                            <span class="position-absolute" onclick="deleteImage(0)">x</span>
+                        </div>
+                        {{/each}}
                         <!-- Image will be show here-->
                     </div>
+
                     <div id="add-image-btn"><i class="fas fa-plus-square fa-5x"></i></i></div>
                 </div>
             </div>
@@ -134,7 +142,8 @@
                         </li>
                         <li>
                             <label for="brand">Thương Hiệu </label>
-                            <input type="text" id="brand" name="brand" class="inf product" value="{{infoProduct.[0].ThuongHieu}}">
+                            <input type="text" id="brand" name="brand" class="inf product"
+                                value="{{infoProduct.[0].ThuongHieu}}">
                         </li>
                         <li>
                             <label for="description">Mô Tả: </label>
