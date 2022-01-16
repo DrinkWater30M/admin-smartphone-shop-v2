@@ -19,18 +19,33 @@ let list = async (req, res) => {
     const products = await productService.list(pageNumber, itemPerPage, nameProduct);
     console.log('i', products);
     const totalProduct = await productService.getAllProduct();
-    res.render('products/productList', { products, totalProduct: totalProduct.length, currentPage: pageNumber+1 });
+    res.render('products/productList', { products, totalProduct: totalProduct.length, currentPage: pageNumber + 1 });
 }
 
 let addProduct = async (req, res) => {
-    console.log('b',req.body)
-    await productService.createProduct(req.body);
+    console.log('b', req.body)
+    await productService.addProduct(req.body);
     return res.send('post crud');
+}
+
+let detailProduct = async (req, res) => {
+    const infoProduct = await productService.detailProduct(req.params.MaSanPham);
+    let i = 1;
+    infoProduct.forEach(element => {
+        element.index = i;
+        i++;
+    });
+    console.log("🚀 ~ file: productController.js ~ line 38 ~ detailProduct ~ infoProduct", infoProduct)
+
+    res.render('products/productDetail', { infoProduct })
+    // productService.editProduct(req.data)
+    // await list(req, res);
 }
 
 module.exports = {
     list: list,
     addProduct: addProduct,
+    detailProduct: detailProduct
 }
 
 

@@ -9,5 +9,6 @@ router.get('/add', function(req, res, next) {
 });
 
 router.post('/add/post', productController.addProduct);
+router.get('/:MaSanPham', productController.detailProduct);
 
 module.exports = router;

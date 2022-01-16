@@ -308,3 +308,8 @@ ul {
 .btnDSTK .form-order {
   display: inline;
 }
+
+.content .btn-icon-clipboard:hover {
+  background-color: #fff;
+  box-shadow: rgb(0 0 0 / 10%) 0 0 0 1px, rgb(0 0 0 / 10%) 0 4px 16px;
+}

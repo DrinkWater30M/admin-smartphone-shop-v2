@@ -1,0 +1,204 @@
+{{!-- <nav class="navbar-default navbar-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="main-menu">
+
+            <li>
+                <a href="/"><i class="fa fa-dashboard"></i> Bảng điều khiển</a>
+            </li>
+            <li>
+                <a href="/accounts"><i class="fa fa-desktop"></i> Danh sách tài
+                    khoản</a>
+            </li>
+            <li>
+                <a href="/accounts/Admin"><i class="fa fa-desktop"></i> Danh sách tài
+                    khoản quản trị</a>
+            </li>
+            <li>
+                <a href="/products" class="active-menu"><i class="fa fa-desktop"></i> Danh sách sản phẩm</a>
+            </li>
+            <li>
+                <a href="/orders"><i class="fa fa-desktop"></i> Danh sách đơn hàng</a>
+            </li>
+            <li>
+                <a href="/information"><i class="fa fa-desktop"></i> Thông tin cửa hàng</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="content">
+    <div id="page-wrapper">
+        <div class="header">
+            <h1 class="page-header">
+                Danh sách sản phẩm
+                <!-- <small>This is your UI elements section</small> -->
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#">Trang chủ</a></li>
+                <li><a href="#">Danh sách sản phẩm </a></li>
+                <li class="active">Dữ liệu</li>
+            </ol>
+
+        </div>
+
+        <div id="page-inner">
+            <div class="panel panel-default">
+
+                <div class="panel-heading">
+                    Danh sách
+                </div>
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-5">Tên sản phẩm: <strong><input type="text"></strong></div>
+                        <div class="col-5">Thương hiệu sản phẩm: <strong><input type="text"></strong></div>
+                        <div class="col-2"><button>xóa</button></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-5">Tên sản phẩm: <strong><input type="text"></strong></div>
+                        <div class="col-5">Thương hiệu sản phẩm: <strong><input type="text"></strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> --}}
+
+<nav class="navbar-default navbar-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="main-menu">
+
+            <li>
+                <a href="/"><i class="fa fa-dashboard"></i> Bảng điều khiển</a>
+            </li>
+            <li>
+                <a href="/accounts"><i class="fa fa-desktop"></i> Danh sách tài
+                    khoản</a>
+            </li>
+            <li>
+                <a href="/accounts/Admin"><i class="fa fa-desktop"></i> Danh sách tài
+                    khoản quản trị</a>
+            </li>
+            <li>
+                <a href="/products" class="active-menu"><i class="fa fa-desktop"></i> Danh sách sản phẩm</a>
+            </li>
+            <li>
+                <a href="/orders"><i class="fa fa-desktop"></i> Danh sách đơn hàng</a>
+            </li>
+            <li>
+                <a href="/information"><i class="fa fa-desktop"></i> Thông tin cửa hàng</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div id="page-wrapper">
+
+    <div class="header">
+        <h1 class="page-header">
+            Chi tiết sản phẩm
+            <!-- <small>This is your UI elements section</small> -->
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#">Trang chủ</a></li>
+            <li><a href="#">Danh sách sản phẩm </a></li>
+            <li class="active">Dữ liệu</li>
+        </ol>
+
+    </div>
+    <div class="content">
+        <div class="row">
+            <div class="col-md-4 col-sm-12 col-xs-12">
+                <!-- Preview image before upload-->
+                <div class="left-content">
+                    <form class="form-image" action="/api/upload-images" method="post" id="form-image">
+                        <input class="d-none" type="file" name="Image" id="image" accept=".png, .jpeg, .jpg"
+                            multiple="">
+                    </form>
+                    <div class="image-main justify-content-center position-relative" id="container-image">
+                        <!-- Image will be show here-->
+                    </div>
+                    <div id="add-image-btn"><i class="fas fa-plus-square fa-5x"></i></i></div>
+                </div>
+            </div>
+            <div class="col-md-8 col-sm-12 col-xs-12 add-product">
+                <div class="product-detail">
+                    <h3>THÔNG TIN SẢN PHẨM</h3>
+
+                    <ul class="product-inf">
+                        <li>
+                            <label for="product-name">Tên Sản Phẩm: </label>
+                            <input type="text" id="product-name" name="productName" class="inf product"
+                                value="{{infoProduct.[0].TenSanPham}}">
+                        </li>
+                        <li>
+                            <label for="brand">Thương Hiệu </label>
+                            <input type="text" id="brand" name="brand" class="inf product" value="{{infoProduct.[0].ThuongHieu}}">
+                        </li>
+                        <li>
+                            <label for="description">Mô Tả: </label>
+                            <textarea type="text" id="description" name="description"
+                                class="inf product">{{infoProduct.[0].MoTa}}</textarea>
+                        </li>
+                        {{#each infoProduct}}
+                        <ul class="product-inf-category 1">
+                            <h4>Loại sản phẩm <span>{{index}}</span></h4>
+                            <li>
+                                <label for="ram">Ram(GB): </label>
+                                <input type="number" id="ram" name="ram" class="inf category" value="{{Ram}}">
+                            </li>
+                            <li>
+                                <label for="rom">Bộ Nhớ(GB): </label>
+                                <input type="number" id="rom" name="rom" class="inf category" value="{{Rom}}">
+                            </li>
+                            <li>
+                                <label for="screen">Màn Hình: </label>
+                                <input type="text" id="screen" name="screen" class="inf category" value="{{ManHinh}}">
+                            </li>
+                            <li>
+                                <label for="resolution">Độ Phân Giải: </label>
+                                <input type="text" id="resolution" name="resolution" class="inf category"
+                                    value="{{DoPhanGiai}}">
+                            </li>
+                            <li>
+                                <label for="cpu">Chip Xử Lí: </label>
+                                <input type="text" id="cpu" name="cpu" class="inf category" value="{{ChipXuLi}}">
+                            </li>
+                            <li>
+                                <label for="battery">Pin(mAh): </label>
+                                <input type="number" id="battery" name="battery" class="inf category" value="{{Pin}}">
+                            </li>
+                            <li>
+                                <label for="color">Màu Sắc: </label>
+                                <input type="text" id="color" name="color" class="inf category" value="{{MauSac}}">
+                            </li>
+                            <li>
+                                <label for="price">Đơn Giá(vnđ): </label>
+                                <input type="number" id="price" name="price" class="inf category" value="{{DonGia}}">
+                            </li>
+                            <li>
+                                <label for="amount">Số Lượng: </label>
+                                <input type="number" id="amount" name="amount" class="inf category" value="{{SoLuong}}">
+                            </li>
+                        </ul>
+                        {{/each}}
+                    </ul>
+
+                    <div id="add-product-category-error" class="text-danger"></div>
+                    <div id="add-product-category-btn" class="btn btn-primary category-btn">Thêm Loại Sản Phẩm!</div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-submit-cancel-section">
+            <button type="button" id="add-product-btn" class="btn btn-success">Thêm Sản Phẩm</button>
+            <button type="button" id="cancel-btn" class="btn btn-danger">Hủy</button>
+        </div>
+
+
+    </div>
+
+</div>
+
+{{!-- Handle for show image before upload --}}
+<script src="/javascripts/product-insert-handler.js"></script>
