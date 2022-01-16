@@ -1,3 +1,5 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+
 <nav class="navbar-default navbar-side" role="navigation">
     <div class="sidebar-collapse">
         <ul class="nav" id="main-menu">
@@ -100,10 +102,15 @@
                 <div class="panel panel-default chartJs">
                     <div class="panel-heading">
                         <div class="card-title">
-                            <div class="title">Biểu đồ thành viên mới</div>
+                            <div class="title">Biểu đồ lợi nhuận hàng tháng</div>
                         </div>
                     </div>
                     <div class="panel-body">
+                        {{#each orderYear}}
+                        <input name="order-price" type="hidden" value="{{DonGia}}">
+                        <input name="order-number" type="hidden" value="{{SoLuongSanPham}}">
+                        <input name="order-time" type="hidden" value="{{ThoiGian}}">
+                        {{/each}}
                         <canvas id="line-chart" class="chart"></canvas>
                     </div>
                 </div>
@@ -180,3 +187,4 @@
     </div>
 </div>
 <script src="/javascripts/dashboard.js"></script>
+<script src="/javascripts/chartDashboard.js"></script>

@@ -83,6 +83,7 @@ let getTopProducts = async (req, res) => {
     orderYear.forEach(element => {
         totalMoney += element.DonGia * element.SoLuongSanPham;
         numberProduct += element.SoLuongSanPham;
+        element.ThoiGian = element.ThoiGian.toISOString()
     })
     temp.name = 'Năm';
     temp.totalMoney = totalMoney;
@@ -90,8 +91,8 @@ let getTopProducts = async (req, res) => {
     temp.numberOrder = orderYear.length;
     statictis.push(temp) 
 
-    console.log("choose", statictis)
-    res.render('index', { productsTop, choose, statictis });
+    console.log("choose", orderYear)
+    res.render('index', { productsTop, choose, statictis, orderMonth , orderYear });
 }
 
 module.exports = {
