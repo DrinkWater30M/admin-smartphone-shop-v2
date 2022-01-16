@@ -42,8 +42,56 @@ let getTopProducts = async (req, res) => {
         element.index = index + 1;
         index++;
     })
-    console.log("choose", req.query.time_choose)
-    res.render('index', { productsTop, choose });
+    if (productsTop.length > 10)
+        productsTop.slice(0, 10);
+
+    let [orderDay, orderMonth, orderYear] = await dashboardService.statictis()
+    // thống kê ngày
+    let totalMoney = 0;
+    let numberProduct = 0;
+    let statictis = [];
+    let temp = {};
+
+    orderDay.forEach(element => {
+        totalMoney += element.DonGia * element.SoLuongSanPham;
+        numberProduct += element.SoLuongSanPham;
+    })
+    temp.name = 'Ngày';
+    temp.totalMoney = totalMoney;
+    temp.numberProduct = numberProduct;
+    temp.numberOrder = orderDay.length;
+    statictis.push(temp)
+
+    // thống kê ngày
+    totalMoney = 0;
+    numberProduct = 0;
+    temp = {};
+    orderMonth.forEach(element => {
+        totalMoney += element.DonGia * element.SoLuongSanPham;
+        numberProduct += element.SoLuongSanPham;
+    })
+    temp.name = 'Tháng';
+    temp.totalMoney = totalMoney;
+    temp.numberProduct = numberProduct;
+    temp.numberOrder = orderMonth.length;
+    statictis.push(temp)
+
+    // thống kê ngày
+    totalMoney = 0;
+    numberProduct = 0;
+    temp = {};
+    orderYear.forEach(element => {
+        totalMoney += element.DonGia * element.SoLuongSanPham;
+        numberProduct += element.SoLuongSanPham;
+    })
+    temp.name = 'Năm';
+    temp.totalMoney = totalMoney;
+    temp.numberProduct = numberProduct;
+    temp.numberOrder = orderYear.length;
+    statictis.push(temp) 
+
+    console.log("choose", statictis)
+    res.render('index', { productsTop, choose, statictis });
 }
 
 module.exports = {

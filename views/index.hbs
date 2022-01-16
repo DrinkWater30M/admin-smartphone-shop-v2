@@ -156,6 +156,26 @@
                     </div>
                 </div>
             </div>
+            <div class="col-sm-6 col-xs-12">
+                <div class="panel panel-default chartJs">
+                    <div class="panel-heading">
+                        <div class="card-title">
+                            <div class="title">Thống kê doanh số cơ bản:
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        {{#each statictis}}
+                        <div><strong>Theo {{name}}:</strong></div>
+                        <ul>
+                            <li>Số lượng đơn hàng đã giao: {{numberOrder}}</li>
+                            <li>Số lượng sản phẩm đã bán: {{numberProduct}}</li>
+                            <li>Doanh thu: {{totalMoney}} vnđ</li>
+                        </ul>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
