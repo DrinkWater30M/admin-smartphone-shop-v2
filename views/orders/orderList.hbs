@@ -43,25 +43,25 @@
     <div id="page-inner">
 
         <div class="row">
-            <div class="col-md-4 col-sm-12 col-xs-12">
+            <div class="col-md-3 col-sm-12 col-xs-12">
                 <div class="board">
                     <div class="panel panel-primary">
                         <div class="number">
                             <h3>
-                                <h3>10</h3>
-                                <small>Tổng số đơn hàng trong tháng</small>
+                                <h3>{{totalOrders}}</h3>
+                                <small>Tổng số đơn hàng</small>
                             </h3>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 col-sm-12 col-xs-12">
+            <div class="col-md-3 col-sm-12 col-xs-12">
                 <div class="board">
                     <div class="panel panel-primary">
                         <div class="number">
                             <h3>
-                                <h3>4</h3>
+                                <h3>{{willDeliver}}</h3>
                                 <small>Số đơn hàng chưa giao</small>
                             </h3>
                         </div>
@@ -69,12 +69,24 @@
                 </div>
             </div>
 
-            <div class="col-md-4 col-sm-12 col-xs-12">
+            <div class="col-md-3 col-sm-12 col-xs-12">
                 <div class="board">
                     <div class="panel panel-primary">
                         <div class="number">
                             <h3>
-                                <h3>6</h3>
+                                <h3>{{delivering}}</h3>
+                                <small>Số đơn hàng đang giao</small>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-12 col-xs-12">
+                <div class="board">
+                    <div class="panel panel-primary">
+                        <div class="number">
+                            <h3>
+                                <h3>{{delivered}}</h3>
                                 <small>Số đơn hàng đã giao</small>
                             </h3>
                         </div>
