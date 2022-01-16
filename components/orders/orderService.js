@@ -20,16 +20,16 @@ const updateOrder = async (order_id, account_id) => {
         raw: true
     })
     if (order) {
-        if (order.TrangThaiGiaoHang === 0)
-            await models.don_hang.update({ TrangThaiGiaoHang: 1 }, {
+        if (order.TrangThaiDonHang === 0)
+            await models.don_hang.update({ TrangThaiDonHang: 1 }, {
                 where: {
                     MaKhachHang: account_id,
                     MaDonHang: order_id,
                     is_del: 0
                 }
             })
-        else if (order.TrangThaiGiaoHang === 1)
-            await models.don_hang.update({ TrangThaiGiaoHang: 2 }, {
+        else if (order.TrangThaiDonHang === 1)
+            await models.don_hang.update({ TrangThaiDonHang: 2 }, {
                 where: {
                     MaKhachHang: account_id,
                     MaDonHang: order_id,

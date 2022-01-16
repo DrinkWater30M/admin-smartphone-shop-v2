@@ -27,6 +27,11 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.TEXT,
       allowNull: true
     },
+    XacMinhTaiKhoan: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      defaultValue: 0
+    },
     is_block: {
       type: DataTypes.BOOLEAN,
       allowNull: false,

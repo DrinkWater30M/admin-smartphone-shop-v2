@@ -2,7 +2,8 @@ const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('don_hang', {
     MaDonHang: {
-      type: DataTypes.CHAR(10),
+      autoIncrement: true,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
@@ -17,7 +18,6 @@ module.exports = function(sequelize, DataTypes) {
     MaSanPham: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true,
       references: {
         model: 'loai_san_pham',
         key: 'MaSanPham'
@@ -26,13 +26,12 @@ module.exports = function(sequelize, DataTypes) {
     LoaiSanPham: {
       type: DataTypes.CHAR(25),
       allowNull: false,
-      primaryKey: true,
       references: {
         model: 'loai_san_pham',
         key: 'LoaiSanPham'
       }
     },
-    TongTien: {
+    DonGia: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
@@ -44,18 +43,30 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DATE,
       allowNull: false
     },
+    HoTen: {
+      type: DataTypes.STRING(50),
+      allowNull: false
+    },
     SoDienThoai: {
       type: DataTypes.CHAR(10),
+      allowNull: false
+    },
+    Email: {
+      type: DataTypes.STRING(100),
       allowNull: false
     },
     DiaChiGiaoHang: {
       type: DataTypes.TEXT,
       allowNull: false
     },
-    TrangThaiGiaoHang: {
+    TrangThaiDonHang: {
       type: DataTypes.TINYINT,
       allowNull: false,
       defaultValue: 0
+    },
+    LuuYCuaNguoiMua: {
+      type: DataTypes.TEXT,
+      allowNull: true
     },
     is_del: {
       type: DataTypes.BOOLEAN,
@@ -73,8 +84,6 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "MaDonHang" },
-          { name: "MaSanPham" },
-          { name: "LoaiSanPham" },
         ]
       },
       {

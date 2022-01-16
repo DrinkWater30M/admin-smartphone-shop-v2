@@ -15,6 +15,10 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       primaryKey: true
     },
+    TenLoaiSanPham: {
+      type: DataTypes.STRING(100),
+      allowNull: false
+    },
     DonGia: {
       type: DataTypes.INTEGER,
       allowNull: false
@@ -50,6 +54,11 @@ module.exports = function(sequelize, DataTypes) {
     MauSac: {
       type: DataTypes.STRING(10),
       allowNull: true
+    },
+    is_del: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: 0
     }
   }, {
     sequelize,
