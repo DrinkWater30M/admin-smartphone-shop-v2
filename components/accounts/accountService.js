@@ -62,7 +62,7 @@ const unblockAccount = async (data) => {
 
 const detailAccount = async (data) => {
     let account = await sequelize.query(
-        `SELECT * FROM khach_hang  WHERE khach_hang.MaKhachHang = '${data.account_id}'`,
+        `SELECT * FROM KHACH_HANG  WHERE KHACH_HANG.MaKhachHang = '${data.account_id}'`,
         {type: QueryTypes.SELECT});
     return account
 }
