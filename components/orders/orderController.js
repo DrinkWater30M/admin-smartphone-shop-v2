@@ -2,7 +2,7 @@ const models = require('../../models');
 const orderService = require('./orderService');
 
 //TODO: cần phải chỉnh lại cho tốt
-const getOrderList = async (req, res) => {
+const getOrderList = async (req, res, mess = null) => {
     let pageNumber = 0
     if (!isNaN(req.query.page) && req.query.page > 0)
         pageNumber = req.query.page - 1;
@@ -51,16 +51,21 @@ const getOrderList = async (req, res) => {
             delivered++
     });
     let i = pageNumber * itemPerPage;
-    res.render('orders/orderList', { currentPage: pageNumber + 1, order1: orders[i], order2: orders[i + 1], order3: orders[i + 2], order4: orders[i + 3], totalOrders, willDeliver, delivering, delivered });
+    res.render('orders/orderList', { currentPage: pageNumber + 1, order1: orders[i], order2: orders[i + 1], order3: orders[i + 2], order4: orders[i + 3], totalOrders, willDeliver, delivering, delivered, mess });
 
 }
 
 const handlingOrder = async (req, res) => {
-    if (req.body.choose === 'update')
-        await orderService.updateOrder(req.body.order_id, req.body.account_id);
+    let mess = null;
+    if (req.body.choose === 'update') {
+        let check = await orderService.updateOrder(req.body.order_id, req.body.account_id);
+        console.log("🚀 ~ file: orderController.js ~ line 62 ~ handlingOrder ~ check", check)
+        if (!check)
+            mess = "Không đủ số lượng sản phẩm";
+    }
     else if (req.body.choose === 'del')
         await orderService.delOrder(req.body.order_id, req.body.account_id);
-    await getOrderList(req, res);
+    await getOrderList(req, res, mess);
 }
 
 module.exports = {

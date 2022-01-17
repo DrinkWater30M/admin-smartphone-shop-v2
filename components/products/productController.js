@@ -39,7 +39,7 @@ let detailProduct = async (req, res) => {
     });
     console.log("🚀 ~ file: productController.js ~ line 38 ~ detailProduct ~ infoProduct", images)
 
-    res.render('products/productDetail2', { infoProduct, images, product_id: req.params.MaSanPham })
+    res.render('products/productDetail', { infoProduct, images, product_id: req.params.MaSanPham })
     // productService.editProduct(req.data)
     // await list(req, res);
 }
@@ -74,6 +74,11 @@ let delProduct = async (req, res) => {
     res.redirect('/products')
 }
 
+let delImage = async (req, res) => {
+    await productService.delImage(req.body);
+    res.redirect('back')
+}
+
 module.exports = {
     list: list,
     addProduct: addProduct,
@@ -82,7 +87,8 @@ module.exports = {
     showCategory: showCategory,
     editProduct: editProduct,
     delCategory: delCategory,
-    delProduct: delProduct
+    delProduct: delProduct,
+    delImage: delImage
 }
 
 

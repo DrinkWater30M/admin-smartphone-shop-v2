@@ -4,7 +4,7 @@ const { Op, INTEGER, QueryTypes } = require("sequelize");
 let list = async (page = 0, itemPerPage = 9, name = '') => {
     console.log('name', page)
 
-    let whereCondition = {is_del: 0}
+    let whereCondition = { is_del: 0 }
     if (name != '') {
         whereCondition = {
             TenSanPham: {
@@ -276,6 +276,21 @@ const delProduct = async (data) => {
     }
 
 }
+const delImage = async (data) => {
+    await models.hinh_anh_san_pham.destroy({ where: { MaHinhAnh: data.idImage } })
+}
+
+const addImage = async (data) => {
+    console.log("🚀 ~ file: productService.js ~ line 284 ~ addImage ~ data", data)
+    const idProduct = data.idProduct
+    for (let i = 0; i < data.urlImages.length; i++) {
+        await sequelize.query(
+            `INSERT INTO hinh_anh_san_pham(MaSanPham, HinhAnh)
+        VALUE (${idProduct}, '${data.urlImages[i].url}');`
+        )
+    }
+
+}
 
 module.exports = {
     list: list,
@@ -288,5 +303,7 @@ module.exports = {
     addCategory: addCategory,
     editProduct: editProduct,
     delCategory: delCategory,
-    delProduct: delProduct
+    delProduct: delProduct,
+    delImage: delImage,
+    addImage: addImage
 }

@@ -116,7 +116,9 @@
         </div>
         <div class="btn-submit-cancel-section">
             <button type="button" id="add-product-btn" class="btn btn-success">Lưu Sản Phẩm</button>
+            {{#if category.MaSanPham}}
             <button type="button" id="del-category-btn" class="btn btn-danger" style="background-color: black;">Xóa</button>
+            {{/if}}
             <a href="/products/{{idProduct}}"><button type="button" id="cancel-btn"
                     class="btn btn-danger">Hủy</button></a>
         </div>

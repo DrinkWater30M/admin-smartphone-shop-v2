@@ -19,8 +19,9 @@ const updateOrder = async (order_id, account_id) => {
         },
         raw: true
     })
+    console.log("🚀 ~ file: orderService.js ~ line 22 ~ updateOrder ~ order", order)
     if (order) {
-        if (order.TrangThaiDonHang === 0)
+        if (order.TrangThaiDonHang === 0) {
             await models.don_hang.update({ TrangThaiDonHang: 1 }, {
                 where: {
                     MaKhachHang: account_id,
@@ -28,14 +29,41 @@ const updateOrder = async (order_id, account_id) => {
                     is_del: 0
                 }
             })
-        else if (order.TrangThaiDonHang === 1)
-            await models.don_hang.update({ TrangThaiDonHang: 2 }, {
+            return true;
+        }
+        else if (order.TrangThaiDonHang === 1) {
+            let product = await models.loai_san_pham.findOne({
                 where: {
-                    MaKhachHang: account_id,
-                    MaDonHang: order_id,
+                    MaSanPham: order.MaSanPham,
+                    LoaiSanPham: order.LoaiSanPham,
                     is_del: 0
-                }
-            })
+                },
+                raw: true
+            });
+
+            if (!product) 
+                return false
+            if (product.SoLuong < order.SoLuongSanPham)
+                return false;
+            else {
+                await models.don_hang.update({ TrangThaiDonHang: 2 }, {
+                    where: {
+                        MaKhachHang: account_id,
+                        MaDonHang: order_id,
+                        is_del: 0
+                    }
+                })
+                const number = product.SoLuong - order.SoLuongSanPham;
+                await models.loai_san_pham.update({ SoLuong:  number}, {
+                    where: {
+                        MaSanPham: order.MaSanPham,
+                        LoaiSanPham: order.LoaiSanPham,
+                        is_del: 0
+                    },
+                })
+                return true;
+            }
+        }
     }
 }
 
