@@ -24,7 +24,7 @@ function chartNumberOrders() {
     for (let i = 0; i < data.length; i++) {
         let time = data[i].defaultValue;
         time = time.slice(5, 7);
-        months[parseInt(time, 10)-1] += orderNumber[i].defaultValue;
+        months[parseInt(time, 10)-1]++;
     }
     console.log(months);
     return months;

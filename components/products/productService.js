@@ -186,11 +186,88 @@ let getImagesProduct = async (MaSanPham) => {
     return images;
 }
 
+let getCategory = async (MaSanPham, MaLoaiSanPham) => {
+    return await models.loai_san_pham.findOne({ where: { MaSanPham: MaSanPham, LoaiSanPham: MaLoaiSanPham, is_del: 0 }, raw: true });
+}
+
+let addCategory = async (data, idProduct) => {
+    let category = await getCategory(data.idProduct, data.idCategory);
+    if (category) {
+        await models.loai_san_pham.update({
+            TenLoaiSanPham: data.type,
+            DonGia: data.price,
+            SoLuong: data.amount,
+            Ram: data.ram,
+            Rom: data.rom,
+            ManHinh: data.screen,
+            DoPhanGiai: data.resolution,
+            ChipXuLi: data.cpu,
+            Pin: data.battery,
+            MauSac: data.color
+        }, {
+            where: {
+                MaSanPham: data.idProduct,
+                LoaiSanPham: data.idCategory
+            }
+        });
+    } else {
+        let idCategory = (new Date()).toISOString();
+
+        await models.loai_san_pham.create({
+            MaSanPham: idProduct,
+            LoaiSanPham: idCategory,
+            TenLoaiSanPham: data.type,
+            DonGia: data.price,
+            SoLuong: data.amount,
+            Ram: data.ram,
+            Rom: data.rom,
+            ManHinh: data.screen,
+            DoPhanGiai: data.resolution,
+            ChipXuLi: data.cpu,
+            Pin: data.battery,
+            MauSac: data.color
+        });
+    }
+}
+
+let editProduct = async (data, idProduct) => {
+    let product = await models.san_pham.findOne({ where: { MaSanPham: idProduct, is_del: 0 }, raw: true });
+
+    let idBrand = data.brand.substring(0, 3);
+    let brand = await sequelize.query(
+        `SELECT * FROM thuong_hieu WHERE thuong_hieu.MaThuongHieu = '${idBrand}'`,
+        { type: QueryTypes.SELECT }
+    );
+    if (brand.length == 0) {
+        await sequelize.query(
+            `INSERT INTO thuong_hieu(MaThuongHieu, ThuongHieu) VALUE('${idBrand}', '${data.brand}');`)
+    }
+
+
+    if (product) {
+        console.log("🚀 ~ file: productService.js ~ line 235 ~ editProduct ~ product", idProduct)
+
+        await models.san_pham.update({
+            TenSanPham: data.productName,
+            ThuongHieu: data.brand,
+            MoTa: data.description
+        }, {
+            where: {
+                MaSanPham: idProduct,
+                is_del: 0,
+            }
+        });
+    }
+}
+
 module.exports = {
     list: list,
     createProduct: createProduct,
     addProduct: addProduct,
     getAllProduct: getAllProduct,
     detailProduct: detailProduct,
-    getImagesProduct: getImagesProduct
+    getImagesProduct: getImagesProduct,
+    getCategory: getCategory,
+    addCategory: addCategory,
+    editProduct: editProduct
 }

@@ -39,15 +39,42 @@ let detailProduct = async (req, res) => {
     });
     console.log("🚀 ~ file: productController.js ~ line 38 ~ detailProduct ~ infoProduct", images)
 
-    res.render('products/productDetail', { infoProduct, images })
+    res.render('products/productDetail2', { infoProduct, images, product_id: req.params.MaSanPham })
     // productService.editProduct(req.data)
     // await list(req, res);
+}
+
+let showCategory = async (req, res) => {
+    let category = {}
+    if (req.params.LoaiSanPham)
+        category = await productService.getCategory(req.params.MaSanPham, req.params.LoaiSanPham);
+        console.log("🚀 ~ file: productController.js ~ line 50 ~ showCategory ~ category", category)
+
+    res.render('products/categoryDetail', { category, idProduct: req.params.MaSanPham })
+}
+
+let addCategory = async (req, res) => {
+    console.log("🚀 ~ file: productController.js ~ line 58 ~ addCategory ~ req.params.MaSanPham", req.params.MaSanPham)
+    await productService.addCategory(req.body, req.params.MaSanPham);
+    
+    await showCategory(req, res);
+}
+
+let editProduct = async (req, res) => {
+    console.log("🚀 ~ file: productController.js ~ line 58 ~ addCategory ~ req.params.MaSanPham", req.params.MaSanPham)
+    await productService.editProduct(req.body, req.params.MaSanPham);
+    
+    await detailProduct(req, res);
 }
 
 module.exports = {
     list: list,
     addProduct: addProduct,
-    detailProduct: detailProduct
+    detailProduct: detailProduct,
+    addCategory: addCategory,
+    // editCategory: editCategory,
+    showCategory: showCategory,
+    editProduct: editProduct
 }
 
 
