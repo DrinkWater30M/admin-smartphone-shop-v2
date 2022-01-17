@@ -13,6 +13,9 @@ router.get('/:MaSanPham', productController.detailProduct);
 router.get('/:MaSanPham/add', productController.showCategory);
 router.get('/:MaSanPham/:LoaiSanPham', productController.showCategory);
 router.post('/:MaSanPham/:LoaiSanPham', productController.addCategory);
+router.post('/:MaSanPham/:LoaiSanPham/del', productController.delCategory);
+router.post('/del', productController.delProduct);
 router.post('/:MaSanPham', productController.editProduct);
+
 
 module.exports = router;

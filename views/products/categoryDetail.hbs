@@ -42,69 +42,83 @@
     </div>
     <div class="content">
         <div class="row">
-            
+            <form id="form-del-category" method="post" action="/products/{{category.MaSanPham}}/{{category.LoaiSanPham}}/del">
+                <input type="hidden" id="type" name="idProduct" value="{{category.MaSanPham}}">
+                <input type="hidden" id="type" name="idCategory" value="{{category.LoaiSanPham}}">
+            </form>
             <div class="col-md-8 col-sm-12 col-xs-12 add-product">
                 <div class="product-detail">
                     <h3>THÔNG TIN LOẠI SẢN PHẨM</h3>
                     <form method="post" id="form-category">
-                    <ul class="product-inf">
-                        
-                        {{!-- {{#each infoProduct}} --}}
-                        <ul class="product-inf-category 1">
-                            <input type="hidden" id="type" name="idProduct" value="{{category.MaSanPham}}">
-                            <input type="hidden" id="type" name="idCategory" value="{{category.LoaiSanPham}}">
-                            <li>
-                                <label for="type">Tên loại sản phẩm: </label>
-                                <input type="text" id="type" name="type" class="inf category" value="{{category.TenLoaiSanPham}}">
-                            </li>
-                            <li>
-                                <label for="ram">Ram(GB): </label>
-                                <input type="number" id="ram" name="ram" class="inf category" value="{{category.Ram}}">
-                            </li>
-                            <li>
-                                <label for="rom">Bộ Nhớ(GB): </label>
-                                <input type="number" id="rom" name="rom" class="inf category" value="{{category.Rom}}">
-                            </li>
-                            <li>
-                                <label for="screen">Màn Hình: </label>
-                                <input type="text" id="screen" name="screen" class="inf category" value="{{category.ManHinh}}">
-                            </li>
-                            <li>
-                                <label for="resolution">Độ Phân Giải: </label>
-                                <input type="text" id="resolution" name="resolution" class="inf category"
-                                    value="{{category.DoPhanGiai}}">
-                            </li>
-                            <li>
-                                <label for="cpu">Chip Xử Lí: </label>
-                                <input type="text" id="cpu" name="cpu" class="inf category" value="{{category.ChipXuLi}}">
-                            </li>
-                            <li>
-                                <label for="battery">Pin(mAh): </label>
-                                <input type="number" id="battery" name="battery" class="inf category" value="{{category.Pin}}">
-                            </li>
-                            <li>
-                                <label for="color">Màu Sắc: </label>
-                                <input type="text" id="color" name="color" class="inf category" value="{{category.MauSac}}">
-                            </li>
-                            <li>
-                                <label for="price">Đơn Giá(vnđ): </label>
-                                <input type="number" id="price" name="price" class="inf category" value="{{category.DonGia}}">
-                            </li>
-                            <li>
-                                <label for="amount">Số Lượng: </label>
-                                <input type="number" id="amount" name="amount" class="inf category" value="{{category.SoLuong}}">
-                            </li>
+                        <ul class="product-inf">
+
+                            {{!-- {{#each infoProduct}} --}}
+                            <ul class="product-inf-category 1">
+                                <input type="hidden" id="type" name="idProduct" value="{{category.MaSanPham}}">
+                                <input type="hidden" id="type" name="idCategory" value="{{category.LoaiSanPham}}">
+                                <li>
+                                    <label for="type">Tên loại sản phẩm: </label>
+                                    <input type="text" id="type" name="type" class="inf category"
+                                        value="{{category.TenLoaiSanPham}}">
+                                </li>
+                                <li>
+                                    <label for="ram">Ram(GB): </label>
+                                    <input type="number" id="ram" name="ram" class="inf category"
+                                        value="{{category.Ram}}">
+                                </li>
+                                <li>
+                                    <label for="rom">Bộ Nhớ(GB): </label>
+                                    <input type="number" id="rom" name="rom" class="inf category"
+                                        value="{{category.Rom}}">
+                                </li>
+                                <li>
+                                    <label for="screen">Màn Hình: </label>
+                                    <input type="text" id="screen" name="screen" class="inf category"
+                                        value="{{category.ManHinh}}">
+                                </li>
+                                <li>
+                                    <label for="resolution">Độ Phân Giải: </label>
+                                    <input type="text" id="resolution" name="resolution" class="inf category"
+                                        value="{{category.DoPhanGiai}}">
+                                </li>
+                                <li>
+                                    <label for="cpu">Chip Xử Lí: </label>
+                                    <input type="text" id="cpu" name="cpu" class="inf category"
+                                        value="{{category.ChipXuLi}}">
+                                </li>
+                                <li>
+                                    <label for="battery">Pin(mAh): </label>
+                                    <input type="number" id="battery" name="battery" class="inf category"
+                                        value="{{category.Pin}}">
+                                </li>
+                                <li>
+                                    <label for="color">Màu Sắc: </label>
+                                    <input type="text" id="color" name="color" class="inf category"
+                                        value="{{category.MauSac}}">
+                                </li>
+                                <li>
+                                    <label for="price">Đơn Giá(vnđ): </label>
+                                    <input type="number" id="price" name="price" class="inf category"
+                                        value="{{category.DonGia}}">
+                                </li>
+                                <li>
+                                    <label for="amount">Số Lượng: </label>
+                                    <input type="number" id="amount" name="amount" class="inf category"
+                                        value="{{category.SoLuong}}">
+                                </li>
+                            </ul>
+                            {{!-- {{/each}} --}}
                         </ul>
-                        {{!-- {{/each}} --}}
-                    </ul>
                     </form>
                     <div id="add-product-category-error" class="text-danger"></div>
                 </div>
             </div>
         </div>
         <div class="btn-submit-cancel-section">
-            <button type="button" id="add-product-btn" class="btn btn-success">Thêm Sản Phẩm</button>
-            <a href="/products/{{idProduct}}"><button type="button" id="cancel-btn" class="btn btn-danger">Hủy</button></a>
+            <button type="button" id="add-product-btn" class="btn btn-success">Lưu Sản Phẩm</button>
+            <button type="button" id="del-category-btn" class="btn btn-danger" style="background-color: black;">Xóa</button>
+            <a href="/products/{{idProduct}}"><button type="button" id="cancel-btn"
+                    class="btn btn-danger">Hủy</button></a>
         </div>
 
 

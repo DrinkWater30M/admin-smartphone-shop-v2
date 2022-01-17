@@ -1,4 +1,5 @@
 const addCategoryProductBtn = document.getElementById("add-product-btn");
+const delCategoryProductBtn = document.getElementById("del-category-btn");
 let errorData = document.getElementById("add-product-category-error");
 
 function validateInputData(){
@@ -34,4 +35,8 @@ addCategoryProductBtn.addEventListener('click', ()=>{
         document.getElementById("form-category").submit();
     }
 
+});
+
+delCategoryProductBtn.addEventListener('click', ()=>{
+    document.getElementById("form-del-category").submit();
 });

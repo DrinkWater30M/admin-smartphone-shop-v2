@@ -4,12 +4,13 @@ const { Op, INTEGER, QueryTypes } = require("sequelize");
 let list = async (page = 0, itemPerPage = 9, name = '') => {
     console.log('name', page)
 
-    let whereCondition = {}
+    let whereCondition = {is_del: 0}
     if (name != '') {
         whereCondition = {
             TenSanPham: {
                 [Op.substring]: name
-            }
+            },
+            is_del: 0
         }
     }
     return models.san_pham.findAll(
@@ -174,7 +175,7 @@ let getAllProduct = async () => {
 let detailProduct = async (MaSanPham) => {
     let product = await sequelize.query(
         `SELECT * FROM san_pham, thuong_hieu, loai_san_pham WHERE san_pham.MaSanPham = '${MaSanPham}' and thuong_hieu.MaThuongHieu = san_pham.MaThuongHieu
-         and loai_san_pham.MaSanPham = '${MaSanPham}'`,
+         and loai_san_pham.MaSanPham = '${MaSanPham}' and san_pham.is_del = 0 and loai_san_pham.is_del = 0`,
         { type: QueryTypes.SELECT }
     );
     return product;
@@ -260,6 +261,22 @@ let editProduct = async (data, idProduct) => {
     }
 }
 
+const delCategory = async (data) => {
+    let category = await models.loai_san_pham.findOne({ where: { MaSanPham: data.idProduct, LoaiSanPham: data.idCategory } })
+    if (category) {
+        await models.loai_san_pham.update({ is_del: 1 }, { where: { MaSanPham: data.idProduct, LoaiSanPham: data.idCategory } })
+    }
+}
+
+const delProduct = async (data) => {
+    let product = await models.san_pham.findOne({ where: { MaSanPham: data.idProduct } })
+    if (product) {
+        await models.san_pham.update({ is_del: 1 }, { where: { MaSanPham: data.idProduct } })
+        await models.loai_san_pham.update({ is_del: 1 }, { where: { MaSanPham: data.idProduct } })
+    }
+
+}
+
 module.exports = {
     list: list,
     createProduct: createProduct,
@@ -269,5 +286,7 @@ module.exports = {
     getImagesProduct: getImagesProduct,
     getCategory: getCategory,
     addCategory: addCategory,
-    editProduct: editProduct
+    editProduct: editProduct,
+    delCategory: delCategory,
+    delProduct: delProduct
 }

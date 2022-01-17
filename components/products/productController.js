@@ -54,17 +54,24 @@ let showCategory = async (req, res) => {
 }
 
 let addCategory = async (req, res) => {
-    console.log("🚀 ~ file: productController.js ~ line 58 ~ addCategory ~ req.params.MaSanPham", req.params.MaSanPham)
     await productService.addCategory(req.body, req.params.MaSanPham);
     
     await showCategory(req, res);
 }
 
 let editProduct = async (req, res) => {
-    console.log("🚀 ~ file: productController.js ~ line 58 ~ addCategory ~ req.params.MaSanPham", req.params.MaSanPham)
     await productService.editProduct(req.body, req.params.MaSanPham);
-    
     await detailProduct(req, res);
+}
+
+let delCategory = async (req, res) => {
+    await productService.delCategory(req.body);
+    res.redirect('../')
+}
+
+let delProduct = async (req, res) => {
+    await productService.delProduct(req.body);
+    res.redirect('/products')
 }
 
 module.exports = {
@@ -72,9 +79,10 @@ module.exports = {
     addProduct: addProduct,
     detailProduct: detailProduct,
     addCategory: addCategory,
-    // editCategory: editCategory,
     showCategory: showCategory,
-    editProduct: editProduct
+    editProduct: editProduct,
+    delCategory: delCategory,
+    delProduct: delProduct
 }
 
 

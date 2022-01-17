@@ -90,7 +90,9 @@
                                 </ul>
                                 <div class="btnSuaXoa">
                                     <a href="/products/{{MaSanPham}}"><button class="btnSua">sửa</button></a>
-                                    <button class="btnXoa">xóa</button>
+                                    <form method="post" action="/products/del" style="display: inline-block;" id="form-del-product"></form>
+                                        <button type="submit" class="btnXoa" value="{{MaSanPham}}" name="idProduct" form="form-del-product">xóa</button>
+                                    
                                 </div>
                             </div>
                         </div>
