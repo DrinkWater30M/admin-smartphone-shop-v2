@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('quan_tri_vien', {
+  return sequelize.define('QUAN_TRI_VIEN', {
     MaAdmin: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -25,7 +25,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   }, {
     sequelize,
-    tableName: 'quan_tri_vien',
+    tableName: 'QUAN_TRI_VIEN',
     timestamps: false,
     indexes: [
       {

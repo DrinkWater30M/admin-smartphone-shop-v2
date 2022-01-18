@@ -3,7 +3,8 @@ const { Op, INTEGER, QueryTypes } = require("sequelize");
 
 const getOrderList = async () => {
     const orderList = await sequelize.query(
-        `SELECT * FROM DON_HANG, KHACH_HANG, SAN_PHAM, THUONG_HIEU, LOAI_SAN_PHAM  
+        `SELECT DON_HANG.*, SAN_PHAM.*, LOAI_SAN_PHAM.*, THUONG_HIEU.*
+        FROM DON_HANG, KHACH_HANG, SAN_PHAM, THUONG_HIEU, LOAI_SAN_PHAM  
         WHERE KHACH_HANG.MaKhachHang = DON_HANG.MaKhachHang and DON_HANG.MaSanPham = SAN_PHAM.MaSanPham and THUONG_HIEU.MaThuongHieu = SAN_PHAM.MaThuongHieu
         and LOAI_SAN_PHAM.MaSanPham = DON_HANG.MaSanPham and LOAI_SAN_PHAM.LoaiSanPham = DON_HANG.LoaiSanPham and DON_HANG.is_del = 0`,
         { type: QueryTypes.SELECT });

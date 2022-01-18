@@ -1,12 +1,12 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('gio_yeu_thich', {
+  return sequelize.define('GIO_YEU_THICH', {
     MaKhachHang: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       references: {
-        model: 'khach_hang',
+        model: 'KHACH_HANNG',
         key: 'MaKhachHang'
       }
     },
@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       primaryKey: true,
       references: {
-        model: 'loai_san_pham',
+        model: 'LOAI_SAN_PHAM',
         key: 'MaSanPham'
       }
     },
@@ -24,13 +24,13 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       primaryKey: true,
       references: {
-        model: 'loai_san_pham',
+        model: 'LOAI_SAN_PHAM',
         key: 'LoaiSanPham'
       }
     }
   }, {
     sequelize,
-    tableName: 'gio_yeu_thich',
+    tableName: 'GIO_YEU_THICH',
     timestamps: false,
     indexes: [
       {
