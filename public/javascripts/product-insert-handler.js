@@ -172,6 +172,11 @@ function main(){
                 contentType: false,
                 cache: false,
                 data: form,
+                beforeSend: function(){
+                    let loadingStyle = document.getElementById('add-product-category-error');
+                    loadingStyle.style.fontWeight = 'bold';
+                    loadingStyle.innerText = 'Đang thêm sản phẩm, vui lòng chờ!';
+                },
                 success: function(res){
                     //Notification
                     alert('Thêm sản phẩm thành công!');

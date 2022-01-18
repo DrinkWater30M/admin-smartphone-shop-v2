@@ -112,6 +112,7 @@ let addProduct = async (data) => {
     try {
         //Generate idBrand
         let idBrand = data.brand.substring(0, 3);
+        data.brand = data.brand[0].toUpperCase() + data.brand.substr(1).toLowerCase();
         let brand = await sequelize.query(
             `SELECT * FROM THUONG_HIEU WHERE THUONG_HIEU.MaThuongHieu = '${idBrand}'`,
             { type: QueryTypes.SELECT }
@@ -157,7 +158,7 @@ let addProduct = async (data) => {
                 await sequelize.query(
                     `INSERT INTO LOAI_SAN_PHAM(MaSanPham, LoaiSanPham, TenLoaiSanPham, DonGia, SoLuong, Ram, Rom, 
                         ManHinh, DoPhanGiai, ChipXuLi, Pin, MauSac)
-                    VALUE(${idProduct}, '${idCategory}', '${data.type}', ${data.price[i]}, ${data.amount[i]}, ${data.ram[i]}, ${data.rom[i]},
+                    VALUE(${idProduct}, '${idCategory[i]}', '${data.type[i]}', ${data.price[i]}, ${data.amount[i]}, ${data.ram[i]}, ${data.rom[i]},
                         '${data.screen[i]}', '${data.resolution[i]}', '${data.cpu[i]}', ${data.battery[i]}, '${data.color[i]}');`
                 )
             }
