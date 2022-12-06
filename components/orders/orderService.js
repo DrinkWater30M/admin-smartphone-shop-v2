@@ -6,7 +6,8 @@ const getOrderList = async () => {
         `SELECT DON_HANG.*, SAN_PHAM.*, LOAI_SAN_PHAM.*, THUONG_HIEU.*
         FROM DON_HANG, KHACH_HANG, SAN_PHAM, THUONG_HIEU, LOAI_SAN_PHAM  
         WHERE KHACH_HANG.MaKhachHang = DON_HANG.MaKhachHang and DON_HANG.MaSanPham = SAN_PHAM.MaSanPham and THUONG_HIEU.MaThuongHieu = SAN_PHAM.MaThuongHieu
-        and LOAI_SAN_PHAM.MaSanPham = DON_HANG.MaSanPham and LOAI_SAN_PHAM.LoaiSanPham = DON_HANG.LoaiSanPham and DON_HANG.is_del = 0`,
+        and LOAI_SAN_PHAM.MaSanPham = DON_HANG.MaSanPham and LOAI_SAN_PHAM.LoaiSanPham = DON_HANG.LoaiSanPham and DON_HANG.is_del = 0
+        ORDER BY DON_HANG.MaDonHang desc`,
         { type: QueryTypes.SELECT });
     return orderList;
 }
@@ -78,7 +79,7 @@ const delOrder = async (order_id, account_id) => {
         raw: true
     })
     if (order) {
-        await models.don_hang.update({ is_del: 1 }, {
+        await models.don_hang.update({ is_del: 1, TrangThaiDonHang: 3 }, {
             where: {
                 MaKhachHang: account_id,
                 MaDonHang: order_id,
