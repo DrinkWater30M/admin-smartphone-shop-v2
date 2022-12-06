@@ -38,6 +38,7 @@ let list = async (page = 0, itemPerPage = 9, name = '') => {
             raw: true,
             offset: page * itemPerPage,
             limit: itemPerPage,
+            order:[['MaSanPham', 'DESC']]
         }
     )
         .then((data) => {
